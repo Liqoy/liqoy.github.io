@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn" id="lang-en" type="button">EN</button>
+      <button class="lang-btn" id="lang-fr" type="button">FR</button>
+    </div>
+    <div class="wrap">
+      <main class="card">
+        <section class="hero">
+          <img id="pfp" class="pfp" alt="Profile picture" src="pfpliqoy.png" />
+          <h1 class="title" id="name">About Me</h1>
+          <p class="subtitle" id="bio"></p>
+          <div class="links" aria-label="Social links">
+            <a class="icon-btn youtube" id="youtube" href="#" target="_blank" rel="noreferrer" aria-label="YouTube">
+              <img class="social-logo" alt="YouTube" src="https://i.ibb.co/JjsnwZDX/Youtube-logo-1.png" />
+            </a>
+            <a class="icon-btn discord" id="discord" href="#" target="_blank" rel="noreferrer" aria-label="Discord">
+              <img class="social-logo" alt="Discord" src="https://i.ibb.co/Q73W12gV/pngegg.png" />
+            </a>
+            <a class="icon-btn tiktok" id="tiktok" href="#" target="_blank" rel="noreferrer" aria-label="TikTok">
+              <img class="social-logo" alt="TikTok" src="https://i.ibb.co/GN6gvvy/logo-tiktok.png" />
+            </a>
+          </div>
+          <div class="meta" id="meta">© 2026 Liqoy. All rights reserved.</div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const config = {
+        name: "Liqoy",
+        bioEn: "A quick link to access my socials and discover them! :)",
+        bioFr: "Un lien pour accéder rapidement à mes réseaux et les découvrir ! :)",
+        youtubeUrl: "https://www.youtube.com/@Liqoy",
+        discordUrl: "https://discord.gg/UqcWfDUxuD",
+        tiktokUrl: "https://www.tiktok.com/@liqoy",
+      };
+
+      const elName = document.getElementById("name");
+      const elBio = document.getElementById("bio");
+      const elYoutube = document.getElementById("youtube");
+      const elDiscord = document.getElementById("discord");
+      const elTiktok = document.getElementById("tiktok");
+      const elLangEn = document.getElementById("lang-en");
+      const elLangFr = document.getElementById("lang-fr");
+      const elMeta = document.getElementById("meta");
+
+      const i18n = {
+        en: {
+          title: "About Me",
+          bio: config.bioEn,
+          footer: "© 2026 Liqoy. All rights reserved.",
+          socialLabel: "Social links",
+          languageLabel: "Language",
+        },
+        fr: {
+          title: "À propos de moi",
+          bio: config.bioFr,
+          footer: "© 2026 Liqoy. Tous droits réservés.",
+          socialLabel: "Réseaux sociaux",
+          languageLabel: "Langue",
+        },
+      };
+
+      function setActiveLang(lang) {
+        const dict = i18n[lang] || i18n.en;
+
+        elName.classList.remove("lang-slide");
+        elBio.classList.remove("lang-slide");
+        elMeta.classList.remove("lang-slide");
+        void elName.offsetWidth;
+
+        document.documentElement.lang = lang;
+        elName.textContent = dict.title;
+        elBio.textContent = dict.bio;
+        elMeta.textContent = dict.footer;
+        document.querySelector(".links")?.setAttribute("aria-label", dict.socialLabel);
+        document.querySelector(".lang-switch")?.setAttribute("aria-label", dict.languageLabel);
+
+        elLangEn.classList.toggle("active", lang === "en");
+        elLangFr.classList.toggle("active", lang === "fr");
+        localStorage.setItem("lang", lang);
+
+        elName.classList.add("lang-slide");
+        elBio.classList.add("lang-slide");
+        elMeta.classList.add("lang-slide");
+      }
+
+      elLangEn.addEventListener("click", () => setActiveLang("en"));
+      elLangFr.addEventListener("click", () => setActiveLang("fr"));
+
+      const savedLang = localStorage.getItem("lang");
+      setActiveLang(savedLang === "fr" ? "fr" : "en");
+
+      elYoutube.href = config.youtubeUrl;
+      elDiscord.href = config.discordUrl;
+      elTiktok.href = config.tiktokUrl;
+    </script>
+  </body>
+</html>
