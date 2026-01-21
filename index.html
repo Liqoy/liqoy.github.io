@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="preconnect" href="https://i.ibb.co" crossorigin />
+    <link rel="dns-prefetch" href="https://i.ibb.co" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" />
+    <link rel="preload" as="image" href="https://i.ibb.co/JjsnwZDX/Youtube-logo-1.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://i.ibb.co/Q73W12gV/pngegg.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="https://i.ibb.co/GN6gvvy/logo-tiktok.png" fetchpriority="high" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="top-controls">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <button class="lang-btn" id="lang-en" type="button">EN</button>
+        <button class="lang-btn" id="lang-fr" type="button">FR</button>
+      </div>
+      <button class="theme-btn" id="theme-toggle" type="button" aria-label="Theme">
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <circle cx="12" cy="12" r="4" fill="currentColor" />
+          <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.22 4.22l1.77 1.77M18.01 18.01l1.77 1.77M19.78 4.22l-1.77 1.77M5.99 18.01l-1.77 1.77" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" />
+        </svg>
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+        </svg>
+      </button>
+    </div>
+    <div class="wrap">
+      <main class="card">
+        <section class="hero">
+          <img id="pfp" class="pfp" alt="Profile picture" src="pfpliqoy.png" width="108" height="108" decoding="async" loading="eager" fetchpriority="high" />
+          <h1 class="title" id="name">About Me</h1>
+          <p class="subtitle" id="bio"></p>
+          <div class="links" aria-label="Social links">
+            <a class="icon-btn youtube" id="youtube" href="#" target="_blank" rel="noreferrer" aria-label="YouTube">
+              <img class="social-logo" alt="YouTube" src="https://i.ibb.co/JjsnwZDX/Youtube-logo-1.png" width="18" height="18" decoding="async" loading="eager" fetchpriority="high" draggable="false" />
+            </a>
+            <a class="icon-btn discord" id="discord" href="#" target="_blank" rel="noreferrer" aria-label="Discord">
+              <img class="social-logo" alt="Discord" src="https://i.ibb.co/Q73W12gV/pngegg.png" width="18" height="18" decoding="async" loading="eager" fetchpriority="high" draggable="false" />
+            </a>
+            <a class="icon-btn tiktok" id="tiktok" href="#" target="_blank" rel="noreferrer" aria-label="TikTok">
+              <img class="social-logo" alt="TikTok" src="https://i.ibb.co/GN6gvvy/logo-tiktok.png" width="18" height="18" decoding="async" loading="eager" fetchpriority="high" draggable="false" />
+            </a>
+          </div>
+          <div class="meta" id="meta">© 2026 Liqoy. All rights reserved.</div>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      const config = {
+        name: "Liqoy",
+        bioEn: "A quick link to access my socials and discover them! :)",
+        bioFr: "Un lien pour accéder rapidement à mes réseaux sociaux et les découvrir ! :)",
+        youtubeUrl: "https://www.youtube.com/@Liqoy",
+        discordUrl: "https://discord.gg/UqcWfDUxuD",
+        tiktokUrl: "https://www.tiktok.com/@liqoy",
+      };
+
+      const elName = document.getElementById("name");
+      const elBio = document.getElementById("bio");
+      const elYoutube = document.getElementById("youtube");
+      const elDiscord = document.getElementById("discord");
+      const elTiktok = document.getElementById("tiktok");
+      const elLangEn = document.getElementById("lang-en");
+      const elLangFr = document.getElementById("lang-fr");
+      const elMeta = document.getElementById("meta");
+
+      const i18n = {
+        en: {
+          title: "About Me",
+          bio: config.bioEn,
+          footer: "© 2026 Liqoy. All rights reserved.",
+          socialLabel: "Social links",
+          languageLabel: "Language",
+        },
+        fr: {
+          title: "À propos de moi",
+          bio: config.bioFr,
+          footer: "© 2026 Liqoy. Tous droits réservés.",
+          socialLabel: "Réseaux sociaux",
+          languageLabel: "Langue",
+        },
+      };
+
+      function setActiveLang(lang, animate = true) {
+        const dict = i18n[lang] || i18n.en;
+
+        const applyText = () => {
+          document.documentElement.lang = lang;
+          elName.textContent = dict.title;
+          elBio.textContent = dict.bio;
+          elMeta.textContent = dict.footer;
+          document.querySelector(".links")?.setAttribute("aria-label", dict.socialLabel);
+          document.querySelector(".lang-switch")?.setAttribute("aria-label", dict.languageLabel);
+
+          elLangEn.classList.toggle("active", lang === "en");
+          elLangFr.classList.toggle("active", lang === "fr");
+          localStorage.setItem("lang", lang);
+        };
+
+        applyText();
+      }
+
+      elLangEn.addEventListener("click", () => setActiveLang("en"));
+      elLangFr.addEventListener("click", () => setActiveLang("fr"));
+
+      const savedLang = localStorage.getItem("lang");
+      setActiveLang(savedLang === "fr" ? "fr" : "en", false);
+
+      elYoutube.href = config.youtubeUrl;
+      elDiscord.href = config.discordUrl;
+      elTiktok.href = config.tiktokUrl;
+
+      document.querySelectorAll("img.social-logo").forEach((img) => {
+        img.addEventListener("contextmenu", (e) => e.preventDefault());
+        img.addEventListener("dragstart", (e) => e.preventDefault());
+      });
+
+      const elThemeToggle = document.getElementById("theme-toggle");
+      function applyTheme(theme) {
+        document.documentElement.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+      }
+
+      const savedTheme = localStorage.getItem("theme");
+      const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+      applyTheme(savedTheme || (prefersLight ? "light" : "dark"));
+
+      elThemeToggle.addEventListener("click", () => {
+        const current = document.documentElement.getAttribute("data-theme") || "dark";
+        applyTheme(current === "light" ? "dark" : "light");
+      });
+    </script>
+  </body>
+</html>
