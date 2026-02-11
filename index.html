@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liqoy</title>
+    <meta
+      name="description"
+      content="Portfolio moderne de Liqoy — développement Minecraft, services et liens importants."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <div class="navbar__brand">
+          <img src="./pfp.png" alt="Liqoy" class="navbar__avatar" />
+          <span class="navbar__name">Liqoy</span>
+        </div>
+        <nav class="navbar__links">
+          <a href="#links" data-i18n="nav.links">Liens</a>
+          <a href="#discover" data-i18n="nav.discover">Découvrir</a>
+        </nav>
+        <div class="lang-switch" aria-label="Changer de langue" data-i18n="nav.langSwitch">
+          <button class="lang-switch__btn lang-switch__btn--active" data-lang="fr">
+            FR
+          </button>
+          <button class="lang-switch__btn" data-lang="en">EN</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero">
+        <img src="./pfp.png" alt="Liqoy" class="hero__avatar" />
+        <h1 class="hero__title">Liqoy</h1>
+        <div class="hero__subtitle-wrap" aria-live="polite">
+          <div class="hero__subtitle-slider">
+            <p class="hero__subtitle-slide" data-i18n="hero.subtitle.1">Bienvenue sur le site Officiel de Liqoy.</p>
+            <p class="hero__subtitle-slide" data-i18n="hero.subtitle.2">Créateur de contenu.</p>
+            <p class="hero__subtitle-slide" data-i18n="hero.subtitle.4">Liens et projets.</p>
+            <p class="hero__subtitle-slide" data-i18n="hero.subtitle.5">Bienvenue sur le site Officiel de Liqoy.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cards row -->
+      <section class="cards-row" aria-label="Sections principales" data-i18n="aria.cardsRow">
+        <article id="links" class="card card--accent">
+          <p class="card__label" data-i18n="card.portfolio.label">Liens</p>
+          <h2 class="card__title" data-i18n="card.portfolio.title">Mes liens</h2>
+          <p class="card__text" data-i18n="card.portfolio.text">
+            Un lien rapide pour accéder à mes réseaux et les découvrir ! :)
+          </p>
+          <div class="links-grid">
+            <a
+              href="https://www.youtube.com/@Liqoy"
+              target="_blank"
+              rel="noreferrer"
+              class="chip-link"
+            >
+              YouTube
+            </a>
+            <a
+              href="https://discord.com/invite/SsjDyprHjE"
+              target="_blank"
+              rel="noreferrer"
+              class="chip-link"
+            >
+              Discord
+            </a>
+          </div>
+        </article>
+      </section>
+
+      <!-- Discord -->
+      <section id="discover" class="services">
+        <a href="https://discord.gg/SsjDyprHjE" target="_blank" rel="noopener noreferrer" class="services__card services__card--discord scroll-reveal">
+          <img src="./JoinDiscord.png" alt="" class="discord-image" />
+          <span class="discord-cta">Join Discord</span>
+        </a>
+
+        <div class="services__image scroll-reveal">
+          <figure class="image-card">
+            <img src="./pfp.png" alt="Portrait de Liqoy" class="avatar-large" />
+          </figure>
+        </div>
+      </section>
+
+      <!-- YouTube + phones -->
+      <section class="phone phone--youtube" aria-label="Chaîne YouTube de Liqoy" data-i18n="aria.youtube">
+        <div class="phone__content scroll-reveal">
+          <div class="phone__text">
+            <p class="section-label" data-i18n="youtube.label">YouTube</p>
+            <h2 class="section-title" data-i18n="youtube.title">Abonne-toi à ma chaîne</h2>
+            <p class="section-text" data-i18n="youtube.text">
+              Vidéos Minecraft, développement de serveurs et projets autour de l'univers de Liqoy.
+            </p>
+            <a
+              href="https://www.youtube.com/@Liqoy"
+              target="_blank"
+              rel="noreferrer"
+              class="card__cta card__cta--youtube"
+              data-i18n="youtube.cta"
+            >
+              S'abonner sur YouTube
+              <span class="icon-arrow">→</span>
+            </a>
+          </div>
+        </div>
+        <div class="phone__visual scroll-reveal">
+          <div class="dotted-map" aria-hidden="true">
+            <span class="dotted-map__dot" style="top: 20%; left: 40%"></span>
+            <span class="dotted-map__dot" style="top: 30%; left: 25%"></span>
+            <span class="dotted-map__dot" style="top: 32%; left: 60%"></span>
+            <span class="dotted-map__dot" style="top: 55%; left: 70%"></span>
+            <span class="dotted-map__dot" style="top: 65%; left: 35%"></span>
+            <span class="dotted-map__dot" style="top: 45%; left: 18%"></span>
+            <span class="dotted-map__dot" style="top: 48%; left: 52%"></span>
+            <span class="dotted-map__dot" style="top: 72%; left: 55%"></span>
+          </div>
+          <div class="phone-stack">
+            <img
+              src="https://i.ibb.co/67mKFdh2/iphone16spro-freebie.png"
+              alt="Mockup iPhone arrière - chaîne YouTube Liqoy"
+              class="phone-img phone-img--back"
+            />
+            <img
+              src="https://i.ibb.co/tT4jwD6r/iphone16pro-freebie.png"
+              alt="Mockup iPhone avant - chaîne YouTube Liqoy"
+              class="phone-img phone-img--front"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Twitch + phones -->
+      <section class="phone phone--twitch" aria-label="Chaîne Twitch de Liqoy" data-i18n="aria.twitch">
+        <div class="phone__visual scroll-reveal">
+          <div class="dotted-map" aria-hidden="true">
+            <span class="dotted-map__dot" style="top: 22%; left: 42%"></span>
+            <span class="dotted-map__dot" style="top: 34%; left: 24%"></span>
+            <span class="dotted-map__dot" style="top: 30%; left: 64%"></span>
+            <span class="dotted-map__dot" style="top: 58%; left: 74%"></span>
+            <span class="dotted-map__dot" style="top: 68%; left: 38%"></span>
+            <span class="dotted-map__dot" style="top: 48%; left: 20%"></span>
+            <span class="dotted-map__dot" style="top: 52%; left: 56%"></span>
+            <span class="dotted-map__dot" style="top: 74%; left: 58%"></span>
+          </div>
+          <div class="phone-stack">
+            <img
+              src="./iphone/iphone16spro-freebie.png"
+              alt="Mockup iPhone arrière - chaîne Twitch Liqoy"
+              class="phone-img phone-img--back"
+            />
+            <img
+              src="./iphone/iphone16pro-freebitwe.png"
+              alt="Mockup iPhone avant - chaîne Twitch Liqoy"
+              class="phone-img phone-img--front"
+            />
+          </div>
+        </div>
+        <div class="phone__content scroll-reveal">
+          <div class="phone__text">
+            <p class="section-label" data-i18n="twitch.label">Twitch</p>
+            <h2 class="section-title" data-i18n="twitch.title">Rejoins les lives Twitch</h2>
+            <p class="section-text" data-i18n="twitch.text">
+              Soirées Minecraft, dev en direct, Q&amp;A et moments avec la commu.
+            </p>
+            <a
+              href="https://www.twitch.tv/liqoy_"
+              target="_blank"
+              rel="noreferrer"
+              class="card__cta card__cta--twitch"
+              data-i18n="twitch.cta"
+            >
+              Rejoindre les lives
+              <span class="icon-arrow">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        © <span id="year"></span> Liqoy.
+        <span data-i18n="footer.rights">Tous droits réservés.</span>
+      </p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
+
