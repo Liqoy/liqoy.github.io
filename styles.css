@@ -1015,3 +1015,311 @@ main { position: relative; z-index: 2; }
 
 /* ─── i18n (lang) ─── */
 [data-lang-fr], [data-lang-en] { transition: opacity 0.2s; }
+
+/* ═══ SECTION HEADER ═══════════════════════ */
+.section-header {
+  text-align: center;
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-heading {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-1);
+  margin: 0;
+}
+
+.section-sub {
+  font-size: 15px;
+  color: var(--text-2);
+  font-weight: 300;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* ═══ SOCIAL BENTO GRID ════════════════════ */
+.social-bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: auto auto;
+  gap: 14px;
+}
+
+/* Discord — spans 4 cols, full height on left */
+.scard--discord {
+  grid-column: span 4;
+  grid-row: span 2;
+}
+
+/* YouTube & Twitch — 2 cols each, stacked right */
+.scard--youtube {
+  grid-column: span 2;
+}
+.scard--twitch {
+  grid-column: span 2;
+}
+
+/* GitHub & Twitter — 3 cols each, second row left */
+.scard--github {
+  grid-column: span 3;
+}
+.scard--twitter {
+  grid-column: span 3;
+}
+
+/* ─── Base scard ─── */
+.scard {
+  position: relative;
+  border-radius: var(--r-xl);
+  border: 1px solid rgba(255,255,255,0.06);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--text-1);
+  transition: transform var(--mid) var(--ease), border-color var(--mid), box-shadow var(--mid);
+  background: var(--ink-2);
+  display: block;
+  cursor: pointer;
+}
+
+.scard:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+}
+
+.scard__body {
+  padding: 28px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Platform Discord ─── */
+.scard--discord {
+  background: linear-gradient(145deg, #1c1d40 0%, #0e0f22 60%, #0a0b18 100%);
+}
+.scard--discord:hover { border-color: rgba(88,101,242,0.4); }
+
+.scard__blobs { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.sblob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(50px);
+  opacity: 0.2;
+}
+.sblob--1 {
+  width: 280px; height: 280px;
+  background: var(--discord-blue);
+  top: -60px; right: -60px;
+}
+.sblob--2 {
+  width: 180px; height: 180px;
+  background: #9ba8ff;
+  bottom: -40px; left: 20px;
+  opacity: 0.12;
+}
+
+.scard__icon-wrap {
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.scard__icon-wrap--discord {
+  background: rgba(88,101,242,0.18);
+  border: 1px solid rgba(88,101,242,0.3);
+  padding: 10px;
+}
+
+.scard__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1) sepia(1) saturate(2) hue-rotate(210deg) brightness(1.3);
+}
+
+.scard__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.scard__platform {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  font-weight: 600;
+  margin: 0;
+}
+
+.scard__name {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-1);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.scard--discord .scard__name {
+  font-size: 1.55rem;
+}
+
+.scard__desc {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  font-weight: 300;
+  line-height: 1.6;
+  margin: 4px 0 0;
+  max-width: 300px;
+}
+
+.scard__cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  align-self: flex-start;
+  margin-top: auto;
+  transition: transform var(--fast) var(--ease), box-shadow var(--fast);
+}
+
+.scard:hover .scard__cta { transform: translateX(3px); }
+
+.scard__cta--discord {
+  background: var(--discord-blue);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(88,101,242,0.4);
+}
+
+/* ─── Platform YouTube ─── */
+.scard--youtube {
+  background: linear-gradient(145deg, #1e0a0a 0%, #140505 100%);
+}
+.scard--youtube:hover { border-color: rgba(255,0,0,0.35); }
+
+.scard__icon-wrap--youtube {
+  background: rgba(255,0,0,0.12);
+  border: 1px solid rgba(255,0,0,0.22);
+  color: #ff6060;
+}
+.scard__svg { width: 26px; height: 26px; }
+
+.scard__cta--youtube {
+  background: rgba(255,0,0,0.15);
+  color: #ff7070;
+  border: 1px solid rgba(255,0,0,0.2);
+}
+
+/* ─── Platform Twitch ─── */
+.scard--twitch {
+  background: linear-gradient(145deg, #160a2a 0%, #0e0518 100%);
+}
+.scard--twitch:hover { border-color: rgba(145,71,255,0.35); }
+
+.scard__icon-wrap--twitch {
+  background: rgba(145,71,255,0.12);
+  border: 1px solid rgba(145,71,255,0.22);
+  color: #c084fc;
+}
+
+.scard__cta--twitch {
+  background: rgba(145,71,255,0.15);
+  color: #c084fc;
+  border: 1px solid rgba(145,71,255,0.2);
+}
+
+/* ─── Platform GitHub ─── */
+.scard--github {
+  background: var(--ink-2);
+}
+.scard--github:hover { border-color: rgba(255,255,255,0.15); }
+
+.scard__icon-wrap--github {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-1);
+}
+
+.scard__cta--github {
+  background: rgba(255,255,255,0.07);
+  color: var(--text-2);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ─── Platform Twitter ─── */
+.scard--twitter {
+  background: var(--ink-2);
+}
+.scard--twitter:hover { border-color: rgba(255,255,255,0.15); }
+
+.scard__icon-wrap--twitter {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.09);
+  color: var(--text-1);
+}
+
+.scard__cta--twitter {
+  background: rgba(255,255,255,0.06);
+  color: var(--text-2);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* ─── Discord logo in bento ─── */
+.discord-logo-wrap {
+  width: 64px; height: 64px;
+  padding: 12px;
+  background: rgba(88,101,242,0.18);
+  border: 1px solid rgba(88,101,242,0.3);
+  border-radius: 18px;
+  margin-bottom: 4px;
+}
+
+.discord-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(215deg) brightness(1.2);
+}
+
+/* ─── Responsive social bento ─── */
+@media (max-width: 860px) {
+  .social-bento {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .scard--discord { grid-column: span 2; grid-row: auto; }
+  .scard--youtube { grid-column: span 1; }
+  .scard--twitch  { grid-column: span 1; }
+  .scard--github  { grid-column: span 1; }
+  .scard--twitter { grid-column: span 1; }
+}
+
+@media (max-width: 500px) {
+  .social-bento {
+    grid-template-columns: 1fr;
+  }
+  .scard--discord,
+  .scard--youtube,
+  .scard--twitch,
+  .scard--github,
+  .scard--twitter {
+    grid-column: span 1;
+    grid-row: auto;
+  }
+}
