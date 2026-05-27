@@ -1,10 +1,7 @@
 /* ═══════════════════════════════════════════
    LIQOY — script.js
-   - Year, Navbar scroll, Scroll reveal
-   - Subtitle slider, Language switch
 ═══════════════════════════════════════════ */
 
-/* ─── Year ─── */
 document.getElementById('year').textContent = new Date().getFullYear();
 
 /* ─── i18n ─── */
@@ -17,13 +14,17 @@ const translations = {
     'hero.subtitle.2': 'Créateur de contenu Minecraft.',
     'hero.subtitle.3': 'Liens et projets.',
     'hero.subtitle.1b': 'Bienvenue sur le site Officiel de Liqoy.',
-    'hero.cta.discover': 'Découvrir',
+    'hero.cta.discover': 'Mes réseaux',
     'card.portfolio.label': 'Liens',
     'card.portfolio.title': 'Mes réseaux',
-    'card.portfolio.text': 'Retrouve-moi sur tous mes réseaux et plonge dans l\'univers Liqoy.',
+    'card.portfolio.text': 'Retrouve-moi partout et rejoins l\'univers Liqoy.',
+    'discord.card.title': 'Serveur communautaire',
+    'discord.card.desc': 'Entraide, événements et bonne ambiance avec toute la communauté Liqoy.',
     'discord.title': 'Rejoins la communauté',
     'discord.text': 'Échanges, entraide, événements. Le serveur Discord de Liqoy t\'attend.',
     'discord.cta': 'Rejoindre Discord',
+    'youtube.cta.short': 'S\'abonner →',
+    'twitch.cta.short': 'Suivre →',
     'avatar.label': 'Liqoy',
     'youtube.title': 'Abonne-toi à\nma chaîne',
     'youtube.text': 'Vidéos Minecraft, développement de serveurs et projets autour de l\'univers de Liqoy.',
@@ -41,13 +42,17 @@ const translations = {
     'hero.subtitle.2': 'Minecraft content creator.',
     'hero.subtitle.3': 'Links and projects.',
     'hero.subtitle.1b': 'Welcome to the Official Liqoy website.',
-    'hero.cta.discover': 'Discover',
+    'hero.cta.discover': 'My socials',
     'card.portfolio.label': 'Links',
     'card.portfolio.title': 'My socials',
-    'card.portfolio.text': 'Find me on all my networks and dive into the Liqoy universe.',
+    'card.portfolio.text': 'Find me everywhere and dive into the Liqoy universe.',
+    'discord.card.title': 'Community server',
+    'discord.card.desc': 'Help, events and good vibes with the whole Liqoy community.',
     'discord.title': 'Join the community',
     'discord.text': 'Chats, support, events. Liqoy\'s Discord server is waiting for you.',
     'discord.cta': 'Join Discord',
+    'youtube.cta.short': 'Subscribe →',
+    'twitch.cta.short': 'Follow →',
     'avatar.label': 'Liqoy',
     'youtube.title': 'Subscribe to\nmy channel',
     'youtube.text': 'Minecraft videos, server development and projects around the Liqoy universe.',
@@ -66,11 +71,8 @@ function applyLang(lang) {
   const t = translations[lang];
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) {
-      el.textContent = t[key];
-    }
+    if (t[key] !== undefined) el.textContent = t[key];
   });
-  // Update active button
   document.querySelectorAll('.lang-switch__btn').forEach(btn => {
     btn.classList.toggle('lang-switch__btn--active', btn.dataset.lang === lang);
   });
@@ -82,23 +84,12 @@ document.querySelectorAll('.lang-switch__btn').forEach(btn => {
 
 /* ─── Navbar scroll ─── */
 const navbar = document.getElementById('navbar');
-let lastY = 0;
 
-function onScroll() {
-  const y = window.scrollY;
-  if (y > 40) {
-    navbar.classList.add('navbar--scrolled');
-  } else {
-    navbar.classList.remove('navbar--scrolled');
-  }
-  lastY = y;
-}
-
-window.addEventListener('scroll', onScroll, { passive: true });
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('navbar--scrolled', window.scrollY > 40);
+}, { passive: true });
 
 /* ─── Scroll reveal ─── */
-const revealEls = document.querySelectorAll('.reveal');
-
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -106,48 +97,48 @@ const revealObserver = new IntersectionObserver((entries) => {
       revealObserver.unobserve(entry.target);
     }
   });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
 
-revealEls.forEach(el => revealObserver.observe(el));
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
 /* ─── Subtitle slider ─── */
 const slider = document.getElementById('subtitleSlider');
 if (slider) {
   const slides = slider.querySelectorAll('.hero__subtitle-slide');
-  const slideH = slides[0] ? slides[0].offsetHeight || 44.8 : 44.8;
+  let slideH = 0;
   let current = 0;
 
-  function nextSlide() {
-    current = (current + 1) % (slides.length - 1); // -1 because last is a duplicate for smooth loop
+  function getSlideH() {
+    return slides[0] ? slides[0].getBoundingClientRect().height || 44.8 : 44.8;
+  }
+
+  setTimeout(() => { slideH = getSlideH(); }, 100);
+
+  setInterval(() => {
+    if (!slideH) slideH = getSlideH();
+    current = (current + 1) % (slides.length - 1);
     slider.style.transform = `translateY(-${current * slideH}px)`;
 
-    // Reset to 0 silently after going through all
     if (current === slides.length - 2) {
       setTimeout(() => {
         slider.style.transition = 'none';
         slider.style.transform = 'translateY(0px)';
         current = 0;
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            slider.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-          });
-        });
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          slider.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+        }));
       }, 600);
     }
-  }
-
-  setInterval(nextSlide, 3200);
+  }, 3200);
 }
 
-/* ─── Subtle avatar tilt on hero ─── */
+/* ─── Hero avatar tilt ─── */
 const tiltEl = document.querySelector('[data-tilt]');
 if (tiltEl) {
   tiltEl.addEventListener('mousemove', (e) => {
-    const rect = tiltEl.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
-    const dx = (e.clientX - cx) / (rect.width / 2);
-    const dy = (e.clientY - cy) / (rect.height / 2);
+    const r = tiltEl.getBoundingClientRect();
+    const dx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+    const dy = (e.clientY - r.top - r.height / 2) / (r.height / 2);
     tiltEl.style.transform = `perspective(400px) rotateY(${dx * 8}deg) rotateX(${-dy * 8}deg) scale(1.03)`;
   });
   tiltEl.addEventListener('mouseleave', () => {
