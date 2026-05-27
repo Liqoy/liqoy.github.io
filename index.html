@@ -10,14 +10,11 @@
 </head>
 <body>
 
-  <!-- Ambient background orbs -->
   <div class="bg-orbs" aria-hidden="true">
     <div class="orb orb--1"></div>
     <div class="orb orb--2"></div>
     <div class="orb orb--3"></div>
   </div>
-
-  <!-- Grain overlay -->
   <div class="grain" aria-hidden="true"></div>
 
   <!-- Navbar -->
@@ -43,7 +40,7 @@
 
   <main>
 
-    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <!-- ═══ HERO ═══ -->
     <section class="hero">
       <div class="hero__inner">
         <div class="hero__avatar-wrap" data-tilt>
@@ -51,16 +48,13 @@
           <div class="hero__avatar-ring"></div>
           <div class="hero__avatar-ring hero__avatar-ring--2"></div>
         </div>
-
         <div class="hero__badge">
           <span class="hero__badge-dot"></span>
           <span data-i18n="hero.badge">Créateur de contenu</span>
         </div>
-
         <h1 class="hero__title">
           <span class="hero__title-line" style="--d:0">L</span><span class="hero__title-line" style="--d:1">i</span><span class="hero__title-line" style="--d:2">q</span><span class="hero__title-line" style="--d:3">o</span><span class="hero__title-line" style="--d:4">y</span>
         </h1>
-
         <div class="hero__subtitle-wrap" aria-live="polite">
           <div class="hero__subtitle-slider" id="subtitleSlider">
             <p class="hero__subtitle-slide" data-i18n="hero.subtitle.1">Bienvenue sur le site Officiel de Liqoy.</p>
@@ -69,93 +63,145 @@
             <p class="hero__subtitle-slide" data-i18n="hero.subtitle.1b">Bienvenue sur le site Officiel de Liqoy.</p>
           </div>
         </div>
-
         <div class="hero__ctas">
-          <a href="#discover" class="btn btn--primary">
-            <span data-i18n="hero.cta.discover">Découvrir</span>
+          <a href="#links" class="btn btn--primary">
+            <span data-i18n="hero.cta.discover">Mes réseaux</span>
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
           </a>
           <a href="https://discord.gg/SsjDyprHjE" target="_blank" rel="noopener" class="btn btn--ghost">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.014.043.031.057a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+            <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Discord_Logo_sans_texte.svg/960px-Discord_Logo_sans_texte.svg.png?_=20210527094128" alt="" width="16" height="16" style="filter:brightness(0) invert(1);object-fit:contain;" />
             Discord
           </a>
         </div>
-
         <div class="hero__scroll-hint" aria-hidden="true">
           <div class="hero__scroll-line"></div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════ LINKS CARD ═══════════════════ -->
+    <!-- ═══ SOCIAL BENTO ═══ -->
     <section class="section-wrap" id="links">
       <div class="container">
-        <div class="links-card reveal">
-          <div class="links-card__header">
-            <span class="pill pill--muted" data-i18n="card.portfolio.label">Liens</span>
-            <h2 class="links-card__title" data-i18n="card.portfolio.title">Mes réseaux</h2>
-            <p class="links-card__text" data-i18n="card.portfolio.text">Retrouve-moi sur tous mes réseaux et plonge dans l'univers Liqoy.</p>
-          </div>
-          <div class="links-grid">
-            <a href="https://github.com/" target="_blank" rel="noreferrer" class="link-item link-item--github">
-              <span class="link-item__icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-              </span>
-              <span class="link-item__label">GitHub</span>
-              <svg class="link-item__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="https://discord.com/" target="_blank" rel="noreferrer" class="link-item link-item--discord">
-              <span class="link-item__icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.014.043.031.057a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
-              </span>
-              <span class="link-item__label">Discord</span>
-              <svg class="link-item__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="https://www.youtube.com/@Liqoy" target="_blank" rel="noreferrer" class="link-item link-item--youtube">
-              <span class="link-item__icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              </span>
-              <span class="link-item__label">YouTube</span>
-              <svg class="link-item__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="https://twitter.com/" target="_blank" rel="noreferrer" class="link-item link-item--twitter">
-              <span class="link-item__icon">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-              </span>
-              <span class="link-item__label">X / Twitter</span>
-              <svg class="link-item__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-          </div>
+
+        <div class="section-header reveal">
+          <span class="pill pill--muted" data-i18n="card.portfolio.label">Liens</span>
+          <h2 class="section-heading" data-i18n="card.portfolio.title">Mes réseaux</h2>
+          <p class="section-sub" data-i18n="card.portfolio.text">Retrouve-moi partout et rejoins l'univers Liqoy.</p>
+        </div>
+
+        <!-- Bento social grid -->
+        <div class="social-bento">
+
+          <!-- Discord — large -->
+          <a href="https://discord.gg/SsjDyprHjE" target="_blank" rel="noreferrer"
+             class="scard scard--discord scard--lg reveal">
+            <div class="scard__blobs" aria-hidden="true">
+              <div class="sblob sblob--1"></div>
+              <div class="sblob sblob--2"></div>
+            </div>
+            <div class="scard__body">
+              <div class="scard__icon-wrap scard__icon-wrap--discord">
+                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Discord_Logo_sans_texte.svg/960px-Discord_Logo_sans_texte.svg.png?_=20210527094128"
+                     alt="Discord" class="scard__logo" />
+              </div>
+              <div class="scard__info">
+                <p class="scard__platform">Discord</p>
+                <h3 class="scard__name" data-i18n="discord.card.title">Serveur communautaire</h3>
+                <p class="scard__desc" data-i18n="discord.card.desc">Entraide, événements et bonne ambiance avec toute la communauté Liqoy.</p>
+              </div>
+              <span class="scard__cta scard__cta--discord" data-i18n="discord.cta">Rejoindre →</span>
+            </div>
+          </a>
+
+          <!-- YouTube -->
+          <a href="https://www.youtube.com/@Liqoy" target="_blank" rel="noreferrer"
+             class="scard scard--youtube reveal reveal--d1">
+            <div class="scard__body">
+              <div class="scard__icon-wrap scard__icon-wrap--youtube">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="scard__svg"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              </div>
+              <div class="scard__info">
+                <p class="scard__platform">YouTube</p>
+                <h3 class="scard__name">@Liqoy</h3>
+              </div>
+              <span class="scard__cta scard__cta--youtube" data-i18n="youtube.cta.short">S'abonner →</span>
+            </div>
+          </a>
+
+          <!-- Twitch -->
+          <a href="https://www.twitch.tv/liqoy_" target="_blank" rel="noreferrer"
+             class="scard scard--twitch reveal reveal--d2">
+            <div class="scard__body">
+              <div class="scard__icon-wrap scard__icon-wrap--twitch">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="scard__svg"><path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/></svg>
+              </div>
+              <div class="scard__info">
+                <p class="scard__platform">Twitch</p>
+                <h3 class="scard__name">liqoy_</h3>
+              </div>
+              <span class="scard__cta scard__cta--twitch" data-i18n="twitch.cta.short">Suivre →</span>
+            </div>
+          </a>
+
+          <!-- GitHub -->
+          <a href="https://github.com/" target="_blank" rel="noreferrer"
+             class="scard scard--github reveal reveal--d1">
+            <div class="scard__body">
+              <div class="scard__icon-wrap scard__icon-wrap--github">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="scard__svg"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              </div>
+              <div class="scard__info">
+                <p class="scard__platform">GitHub</p>
+                <h3 class="scard__name">Code & projets</h3>
+              </div>
+              <span class="scard__cta scard__cta--github">Voir →</span>
+            </div>
+          </a>
+
+          <!-- X / Twitter -->
+          <a href="https://twitter.com/" target="_blank" rel="noreferrer"
+             class="scard scard--twitter reveal reveal--d2">
+            <div class="scard__body">
+              <div class="scard__icon-wrap scard__icon-wrap--twitter">
+                <svg viewBox="0 0 24 24" fill="currentColor" class="scard__svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </div>
+              <div class="scard__info">
+                <p class="scard__platform">X / Twitter</p>
+                <h3 class="scard__name">Actualités</h3>
+              </div>
+              <span class="scard__cta scard__cta--twitter">Suivre →</span>
+            </div>
+          </a>
+
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════ DISCORD SECTION ═══════════════════ -->
+    <!-- ═══ DISCOVER / DISCORD HERO SECTION ═══ -->
     <section id="discover" class="section-wrap">
       <div class="container">
         <div class="bento-grid reveal">
-
-          <!-- Discord big card -->
-          <a href="https://discord.gg/SsjDyprHjE" target="_blank" rel="noopener noreferrer" class="bento-card bento-card--discord bento-card--wide">
+          <a href="https://discord.gg/SsjDyprHjE" target="_blank" rel="noopener noreferrer" class="bento-card bento-card--discord">
             <div class="bento-card__bg-circles" aria-hidden="true">
               <div class="circle circle--1"></div>
               <div class="circle circle--2"></div>
               <div class="circle circle--3"></div>
             </div>
             <div class="bento-card__content">
-              <div class="platform-icon platform-icon--discord">
-                <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.014.043.031.057a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>
+              <div class="discord-logo-wrap">
+                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Discord_Logo_sans_texte.svg/960px-Discord_Logo_sans_texte.svg.png?_=20210527094128"
+                     alt="Discord" class="discord-logo-img" />
               </div>
               <h2 class="bento-card__title" data-i18n="discord.title">Rejoins la communauté</h2>
               <p class="bento-card__text" data-i18n="discord.text">Échanges, entraide, événements. Le serveur Discord de Liqoy t'attend.</p>
               <span class="btn btn--discord">
+                <img src="https://upload.wikimedia.org/wikipedia/fr/thumb/4/4f/Discord_Logo_sans_texte.svg/960px-Discord_Logo_sans_texte.svg.png?_=20210527094128"
+                     alt="" width="16" height="16" style="filter:brightness(0) invert(1);object-fit:contain;flex-shrink:0;" />
                 <span data-i18n="discord.cta">Rejoindre Discord</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
               </span>
             </div>
           </a>
-
-          <!-- Avatar card -->
           <div class="bento-card bento-card--avatar reveal">
             <img src="./pfp.png" alt="Portrait de Liqoy" class="bento-avatar" />
             <div class="bento-card__avatar-label">
@@ -163,12 +209,11 @@
               <span data-i18n="avatar.label">Liqoy</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════ YOUTUBE ═══════════════════ -->
+    <!-- ═══ YOUTUBE ═══ -->
     <section class="platform-section platform-section--youtube" aria-label="Chaîne YouTube de Liqoy">
       <div class="container">
         <div class="platform-row reveal">
@@ -179,8 +224,8 @@
             </span>
             <h2 class="platform-title" data-i18n="youtube.title">Abonne-toi à<br/>ma chaîne</h2>
             <p class="platform-text" data-i18n="youtube.text">Vidéos Minecraft, développement de serveurs et projets autour de l'univers de Liqoy.</p>
-            <a href="https://www.youtube.com/@Liqoy" target="_blank" rel="noreferrer" class="btn btn--platform btn--yt" data-i18n="youtube.cta">
-              S'abonner
+            <a href="https://www.youtube.com/@Liqoy" target="_blank" rel="noreferrer" class="btn btn--platform btn--yt">
+              <span data-i18n="youtube.cta">S'abonner</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
             </a>
           </div>
@@ -197,7 +242,7 @@
       </div>
     </section>
 
-    <!-- ═══════════════════ TWITCH ═══════════════════ -->
+    <!-- ═══ TWITCH ═══ -->
     <section class="platform-section platform-section--twitch" aria-label="Chaîne Twitch de Liqoy">
       <div class="container">
         <div class="platform-row platform-row--reverse reveal">
@@ -216,9 +261,9 @@
               Twitch
             </span>
             <h2 class="platform-title" data-i18n="twitch.title">Rejoins les<br/>lives Twitch</h2>
-            <p class="platform-text" data-i18n="twitch.text">Soirées Minecraft, dev en direct, Q&A et moments avec la communauté.</p>
-            <a href="https://www.twitch.tv/liqoy_" target="_blank" rel="noreferrer" class="btn btn--platform btn--twitch-cta" data-i18n="twitch.cta">
-              Voir les lives
+            <p class="platform-text" data-i18n="twitch.text">Soirées Minecraft, dev en direct, Q&amp;A et moments avec la communauté.</p>
+            <a href="https://www.twitch.tv/liqoy_" target="_blank" rel="noreferrer" class="btn btn--platform btn--twitch-cta">
+              <span data-i18n="twitch.cta">Voir les lives</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
             </a>
           </div>
