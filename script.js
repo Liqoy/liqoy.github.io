@@ -1,256 +1,156 @@
-// Smooth scroll for buttons / links using data-scroll-to
-document.querySelectorAll("[data-scroll-to]").forEach((el) => {
-  el.addEventListener("click", (e) => {
-    const target = el.getAttribute("data-scroll-to");
-    if (!target) return;
-    const section = document.querySelector(target);
-    if (!section) return;
+/* ═══════════════════════════════════════════
+   LIQOY — script.js
+   - Year, Navbar scroll, Scroll reveal
+   - Subtitle slider, Language switch
+═══════════════════════════════════════════ */
 
-    e.preventDefault();
-    section.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-});
+/* ─── Year ─── */
+document.getElementById('year').textContent = new Date().getFullYear();
 
-// Scroll-driven animation (reveal) for elements with .scroll-reveal
-const revealElements = document.querySelectorAll(".scroll-reveal");
-if (revealElements.length && "IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("scroll-reveal--visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    },
-    {
-      threshold: 0.3,
-    }
-  );
-
-  revealElements.forEach((el) => observer.observe(el));
-} else {
-  // Fallback: no IntersectionObserver support, show elements directly
-  revealElements.forEach((el) => el.classList.add("scroll-reveal--visible"));
-}
-
-// Current year in footer
-const yearSpan = document.getElementById("year");
-if (yearSpan) {
-  yearSpan.textContent = new Date().getFullYear().toString();
-}
-
-// Barre flottante : s'active quand la header bar pleine a quitté le haut (on ne la voit plus)
-const navbar = document.getElementById("navbar");
-if (navbar) {
-  function getThreshold() {
-    return Math.max(80, navbar.offsetHeight);
-  }
-  const onScroll = () => {
-    if (window.scrollY > getThreshold()) {
-      navbar.classList.add("navbar--scrolled");
-    } else {
-      navbar.classList.remove("navbar--scrolled");
-    }
-  };
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-  onScroll();
-}
-
-// Translations FR / EN
+/* ─── i18n ─── */
 const translations = {
   fr: {
-    "nav.links": "Liens",
-    "nav.discover": "Découvrir",
-    "nav.langSwitch": "Changer de langue",
-    "hero.subtitle.1": "Bienvenue sur le site Officiel de Liqoy.",
-    "hero.subtitle.2": "Créateur de contenu.",
-    "hero.subtitle.4": "Liens et projets.",
-    "hero.subtitle.5": "Bienvenue sur le site Officiel de Liqoy.",
-    "card.portfolio.label": "Liens",
-    "card.portfolio.title": "Mes liens",
-    "card.portfolio.text":
-      "Un lien rapide pour accéder à mes réseaux et les découvrir ! :)",
-    "services.label": "Services",
-    "services.title": "C'est Moi Liqoy.png",
-    "services.text": "",
-    "youtube.label": "YouTube",
-    "youtube.title": "Abonne-toi à ma chaîne",
-    "youtube.text": "Vidéos Minecraft, développement de serveurs et projets autour de l'univers de Liqoy.",
-    "youtube.cta": "S'abonner sur YouTube",
-    "twitch.label": "Twitch",
-    "twitch.title": "Rejoins les lives Twitch",
-    "twitch.text": "Soirées Minecraft, dev en direct, Q&A et moments avec la commu.",
-    "twitch.cta": "Rejoindre les lives",
-    "aria.cardsRow": "Sections principales",
-    "aria.youtube": "Chaîne YouTube de Liqoy",
-    "aria.twitch": "Chaîne Twitch de Liqoy",
-    "tag.minecraft": "Minecraft",
-    "tag.skript": "Skript",
-    "tag.dev": "Développement",
-    "image.badge": "C'est moi, Liqoy",
-    "discord.cta": "Rejoindre Discord",
-    "footer.rights": "Tous droits réservés.",
+    'nav.links': 'Liens',
+    'nav.discover': 'Découvrir',
+    'hero.badge': 'Créateur de contenu',
+    'hero.subtitle.1': 'Bienvenue sur le site Officiel de Liqoy.',
+    'hero.subtitle.2': 'Créateur de contenu Minecraft.',
+    'hero.subtitle.3': 'Liens et projets.',
+    'hero.subtitle.1b': 'Bienvenue sur le site Officiel de Liqoy.',
+    'hero.cta.discover': 'Découvrir',
+    'card.portfolio.label': 'Liens',
+    'card.portfolio.title': 'Mes réseaux',
+    'card.portfolio.text': 'Retrouve-moi sur tous mes réseaux et plonge dans l\'univers Liqoy.',
+    'discord.title': 'Rejoins la communauté',
+    'discord.text': 'Échanges, entraide, événements. Le serveur Discord de Liqoy t\'attend.',
+    'discord.cta': 'Rejoindre Discord',
+    'avatar.label': 'Liqoy',
+    'youtube.title': 'Abonne-toi à\nma chaîne',
+    'youtube.text': 'Vidéos Minecraft, développement de serveurs et projets autour de l\'univers de Liqoy.',
+    'youtube.cta': 'S\'abonner',
+    'twitch.title': 'Rejoins les\nlives Twitch',
+    'twitch.text': 'Soirées Minecraft, dev en direct, Q&A et moments avec la communauté.',
+    'twitch.cta': 'Voir les lives',
+    'footer.rights': 'Tous droits réservés.',
   },
   en: {
-    "nav.links": "Links",
-    "nav.discover": "Discover",
-    "nav.langSwitch": "Change language",
-    "hero.subtitle.1": "Welcome to the official Liqoy website.",
-    "hero.subtitle.2": "Content creator.",
-    "hero.subtitle.4": "Links and projects.",
-    "hero.subtitle.5": "Welcome to the official Liqoy website.",
-    "card.portfolio.label": "Links",
-    "card.portfolio.title": "My links",
-    "card.portfolio.text":
-      "A quick link to access my socials and discover them! :)",
-    "services.label": "Services",
-    "services.title": "Its Me Liqoy.png",
-    "services.text": "",
-    "youtube.label": "YouTube",
-    "youtube.title": "Subscribe to my channel",
-    "youtube.text": "Minecraft videos, server development and projects around the Liqoy universe.",
-    "youtube.cta": "Subscribe on YouTube",
-    "twitch.label": "Twitch",
-    "twitch.title": "Join the Twitch streams",
-    "twitch.text": "Minecraft evenings, live dev, Q&A and moments with the community.",
-    "twitch.cta": "Join the streams",
-    "aria.cardsRow": "Main sections",
-    "aria.youtube": "Liqoy's YouTube channel",
-    "aria.twitch": "Liqoy's Twitch channel",
-    "tag.minecraft": "Minecraft",
-    "tag.skript": "Skript",
-    "tag.dev": "Development",
-    "image.badge": "It's me, Liqoy",
-    "discord.cta": "Join Discord",
-    "footer.rights": "All rights reserved.",
-  },
+    'nav.links': 'Links',
+    'nav.discover': 'Discover',
+    'hero.badge': 'Content creator',
+    'hero.subtitle.1': 'Welcome to the Official Liqoy website.',
+    'hero.subtitle.2': 'Minecraft content creator.',
+    'hero.subtitle.3': 'Links and projects.',
+    'hero.subtitle.1b': 'Welcome to the Official Liqoy website.',
+    'hero.cta.discover': 'Discover',
+    'card.portfolio.label': 'Links',
+    'card.portfolio.title': 'My socials',
+    'card.portfolio.text': 'Find me on all my networks and dive into the Liqoy universe.',
+    'discord.title': 'Join the community',
+    'discord.text': 'Chats, support, events. Liqoy\'s Discord server is waiting for you.',
+    'discord.cta': 'Join Discord',
+    'avatar.label': 'Liqoy',
+    'youtube.title': 'Subscribe to\nmy channel',
+    'youtube.text': 'Minecraft videos, server development and projects around the Liqoy universe.',
+    'youtube.cta': 'Subscribe',
+    'twitch.title': 'Join the\nTwitch lives',
+    'twitch.text': 'Minecraft evenings, live dev, Q&A and community moments.',
+    'twitch.cta': 'Watch lives',
+    'footer.rights': 'All rights reserved.',
+  }
 };
 
-let currentLang = "fr";
+let currentLang = 'fr';
 
-function setLanguage(lang) {
-  if (!translations[lang]) lang = "fr";
+function applyLang(lang) {
   currentLang = lang;
-
-  document.documentElement.setAttribute("lang", lang);
-
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const key = el.getAttribute("data-i18n");
-    const value = translations[lang][key];
-    if (value) {
-      // Si c'est une section ou un élément avec aria-label, mettre à jour aria-label
-      if (el.tagName === "SECTION" || el.hasAttribute("aria-label")) {
-        el.setAttribute("aria-label", value);
-      } else {
-        // Sinon, mettre à jour le texte
-        el.textContent = value;
-      }
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      el.textContent = t[key];
     }
   });
-
-  document.querySelectorAll(".lang-switch__btn").forEach((btn) => {
-    if (btn.getAttribute("data-lang") === lang) {
-      btn.classList.add("lang-switch__btn--active");
-    } else {
-      btn.classList.remove("lang-switch__btn--active");
-    }
+  // Update active button
+  document.querySelectorAll('.lang-switch__btn').forEach(btn => {
+    btn.classList.toggle('lang-switch__btn--active', btn.dataset.lang === lang);
   });
 }
 
-// Lang switch buttons
-document.querySelectorAll(".lang-switch__btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const lang = btn.getAttribute("data-lang");
-    setLanguage(lang);
-  });
+document.querySelectorAll('.lang-switch__btn').forEach(btn => {
+  btn.addEventListener('click', () => applyLang(btn.dataset.lang));
 });
 
-// Slider titres hero : changement de texte (sans bug)
-const heroSlider = document.querySelector(".hero__subtitle-slider");
-const heroSlides = document.querySelectorAll(".hero__subtitle-slide");
-const SLIDE_COUNT = heroSlides.length;
-if (heroSlider && SLIDE_COUNT > 0) {
-  heroSlider.style.transform = "translateY(0)";
-  let slideIndex = 0;
-  function goToSlide(index) {
-    slideIndex = (index + SLIDE_COUNT) % SLIDE_COUNT;
-    heroSlider.style.transform = `translateY(-${slideIndex * 3.2}em)`;
+/* ─── Navbar scroll ─── */
+const navbar = document.getElementById('navbar');
+let lastY = 0;
+
+function onScroll() {
+  const y = window.scrollY;
+  if (y > 40) {
+    navbar.classList.add('navbar--scrolled');
+  } else {
+    navbar.classList.remove('navbar--scrolled');
   }
+  lastY = y;
+}
+
+window.addEventListener('scroll', onScroll, { passive: true });
+
+/* ─── Scroll reveal ─── */
+const revealEls = document.querySelectorAll('.reveal');
+
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('reveal--visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+/* ─── Subtitle slider ─── */
+const slider = document.getElementById('subtitleSlider');
+if (slider) {
+  const slides = slider.querySelectorAll('.hero__subtitle-slide');
+  const slideH = slides[0] ? slides[0].offsetHeight || 44.8 : 44.8;
+  let current = 0;
+
   function nextSlide() {
-    goToSlide(slideIndex + 1);
+    current = (current + 1) % (slides.length - 1); // -1 because last is a duplicate for smooth loop
+    slider.style.transform = `translateY(-${current * slideH}px)`;
+
+    // Reset to 0 silently after going through all
+    if (current === slides.length - 2) {
+      setTimeout(() => {
+        slider.style.transition = 'none';
+        slider.style.transform = 'translateY(0px)';
+        current = 0;
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            slider.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+          });
+        });
+      }, 600);
+    }
   }
-  setInterval(nextSlide, 3500);
+
+  setInterval(nextSlide, 3200);
 }
 
-// Protection contre la copie d'images
-document.addEventListener("contextmenu", (e) => {
-  if (e.target.tagName === "IMG") {
-    e.preventDefault();
-    return false;
-  }
-});
-
-document.addEventListener("dragstart", (e) => {
-  if (e.target.tagName === "IMG") {
-    e.preventDefault();
-    return false;
-  }
-});
-
-document.addEventListener("selectstart", (e) => {
-  if (e.target.tagName === "IMG") {
-    e.preventDefault();
-    return false;
-  }
-});
-
-// Désactiver le glisser-déposer d'images
-document.querySelectorAll("img").forEach((img) => {
-  img.setAttribute("draggable", "false");
-  img.style.userSelect = "none";
-  img.style.webkitUserSelect = "none";
-  img.style.webkitUserDrag = "none";
-  img.style.khtmlUserDrag = "none";
-  img.style.mozUserSelect = "none";
-  img.style.msUserSelect = "none";
-  
-  // Protection supplémentaire avec overlay transparent
-  img.addEventListener("mousedown", (e) => {
-    if (e.button === 1 || e.button === 2) {
-      e.preventDefault();
-      return false;
-    }
+/* ─── Subtle avatar tilt on hero ─── */
+const tiltEl = document.querySelector('[data-tilt]');
+if (tiltEl) {
+  tiltEl.addEventListener('mousemove', (e) => {
+    const rect = tiltEl.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const dx = (e.clientX - cx) / (rect.width / 2);
+    const dy = (e.clientY - cy) / (rect.height / 2);
+    tiltEl.style.transform = `perspective(400px) rotateY(${dx * 8}deg) rotateX(${-dy * 8}deg) scale(1.03)`;
   });
-});
-
-// Empêcher la sauvegarde d'image via Ctrl+S ou autres raccourcis
-document.addEventListener("keydown", (e) => {
-  // Ctrl+S, Ctrl+Shift+S, Ctrl+U
-  if ((e.ctrlKey || e.metaKey) && (e.key === "s" || e.key === "S" || e.key === "u" || e.key === "U")) {
-    if (e.target.tagName === "IMG" || document.activeElement.tagName === "IMG") {
-      e.preventDefault();
-      return false;
-    }
-  }
-  
-  // F12 (DevTools) - optionnel, peut être commenté si besoin
-  // if (e.key === "F12") {
-  //   e.preventDefault();
-  //   return false;
-  // }
-});
-
-// Détection langue Windows/PC (système) pour EN/FR
-function getSystemLang() {
-  const lang =
-    (navigator.languages && navigator.languages[0]) ||
-    navigator.language ||
-    navigator.userLanguage ||
-    "fr";
-  return lang.slice(0, 2).toLowerCase();
+  tiltEl.addEventListener('mouseleave', () => {
+    tiltEl.style.transform = '';
+  });
 }
-const systemLang = getSystemLang();
-setLanguage(systemLang === "en" ? "en" : "fr");
-
