@@ -1,66 +1,103 @@
-/* ═══════════════════════════════════════════
-   LIQOY — script.js
-═══════════════════════════════════════════ */
-
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ─── i18n ─── */
 const translations = {
   fr: {
-    'nav.links': 'Liens',
-    'nav.discover': 'Découvrir',
-    'hero.badge': 'Créateur de contenu',
-    'hero.subtitle.1': 'Bienvenue sur le site Officiel de Liqoy.',
-    'hero.subtitle.2': 'Créateur de contenu Minecraft.',
-    'hero.subtitle.3': 'Liens et projets.',
-    'hero.subtitle.1b': 'Bienvenue sur le site Officiel de Liqoy.',
-    'hero.cta.discover': 'Mes réseaux',
-    'card.portfolio.label': 'Liens',
-    'card.portfolio.title': 'Mes réseaux',
-    'card.portfolio.text': 'Retrouve-moi partout et rejoins l\'univers Liqoy.',
-    'discord.card.title': 'Serveur communautaire',
-    'discord.card.desc': 'Entraide, événements et bonne ambiance avec toute la communauté Liqoy.',
-    'discord.title': 'Rejoins la communauté',
-    'discord.text': 'Échanges, entraide, événements. Le serveur Discord de Liqoy t\'attend.',
-    'discord.cta': 'Rejoindre Discord',
-    'youtube.cta.short': 'S\'abonner →',
-    'twitch.cta.short': 'Suivre →',
-    'avatar.label': 'Liqoy',
-    'youtube.title': 'Abonne-toi à\nma chaîne',
-    'youtube.text': 'Vidéos Minecraft, développement de serveurs et projets autour de l\'univers de Liqoy.',
-    'youtube.cta': 'S\'abonner',
-    'twitch.title': 'Rejoins les\nlives Twitch',
-    'twitch.text': 'Soirées Minecraft, dev en direct, Q&A et moments avec la communauté.',
-    'twitch.cta': 'Voir les lives',
-    'footer.rights': 'Tous droits réservés.',
+    'nav.currently': '🔥 Actuellement',
+    'nav.links': '🌐 Liens',
+    'nav.content': '🎨 Créations',
+    'hero.status': 'En ligne — mode créatif activé',
+    'hero.tagline.1': 'Bedwars',
+    'hero.tagline.2': 'Rocket League',
+    'hero.tagline.3': 'Tech',
+    'hero.cta': '🌐 Mes réseaux',
+    'hero.cta2': '🤔 Ce que je fais',
+    'currently.label': 'En ce moment',
+    'currently.title': 'Sur le feu 🍳',
+    'currently.desc': "Ce qui m'occupe en ce moment (spoiler : c'est cool).",
+    'current.1.label': 'Bedwars Concepts',
+    'current.1.text': 'Je planche sur des concepts Bedwars un peu fous — maps, mécaniques, reworks. Du lourd !',
+    'current.1.live': 'En cours (chaud devant !)',
+    'current.2.label': 'Tech Stuff',
+    'current.2.text': 'Je prépare des trucs tech — vidéos, dev, expériences. Ça va être propre (ou pas).',
+    'current.2.live': 'En préparation 🤫',
+    'links.label': 'Me trouver',
+    'links.title': "Où est-ce que je traîne ?",
+    'links.desc': 'Clique partout, je suis gentil je mords pas (sauf si t\'es un cube).',
+    'discord.name': 'Le QG communautaire',
+    'twitter.name': 'Mes tweets',
+    'github.name': 'Code & trucs',
+    'content.label': 'Mes trucs',
+    'content.title': "Regarde ce que j'ai fait !",
+    'content.desc': 'Une sélection de mes meilleures galettes (numériques).',
+    'content.1.tag': '⚔️ Bedwars',
+    'content.1.title': 'Map Bedwars — Crystalline',
+    'content.1.desc': "Une map avec des cristaux qui font des trucs. C'est joli et ça claque.",
+    'content.1.link': 'Voir le délire →',
+    'content.2.tag': '🔧 Tech',
+    'content.2.title': 'Build un serveur MC en 2025',
+    'content.2.desc': 'Stack moderne, automatisation, et un peu de sueur. En vrai c\'est cool.',
+    'content.2.link': 'Voir la vidéo →',
+    'content.3.tag': '🚗 Rocket League',
+    'content.3.title': 'Montage — Saison X',
+    'content.3.desc': 'Mes plus beaux buts et des moments stylés (oui je me la pète un peu).',
+    'content.3.link': 'Mate ça →',
+    'content.4.tag': '🤖 Dev',
+    'content.4.title': 'Générateur de maps Bedwars',
+    'content.4.desc': 'Un outil open-source qui génère des maps. Parce que j\'avais la flemme.',
+    'content.4.link': 'Voir le bazar →',
+    'about.label': 'Qui ça ?',
+    'about.greeting': "Salut c'est Liqoy ! 👋",
+    'about.text': 'Je suis un passionné de Bedwars qui passe son temps à imaginer des concepts à la con (mais cools). Quand je ne fais pas ça, je bricole du contenu tech, je monte des vidéos, ou je perds à Rocket League. J\'aime les trucs bien faits, les idées originales et les communautés sympas. Bref, bienvenue dans mon petit univers un peu bordélique. Enjoy ! 🎉',
+    'footer.rights': 'Tous droits réservés (ou pas).',
   },
   en: {
-    'nav.links': 'Links',
-    'nav.discover': 'Discover',
-    'hero.badge': 'Content creator',
-    'hero.subtitle.1': 'Welcome to the Official Liqoy website.',
-    'hero.subtitle.2': 'Minecraft content creator.',
-    'hero.subtitle.3': 'Links and projects.',
-    'hero.subtitle.1b': 'Welcome to the Official Liqoy website.',
-    'hero.cta.discover': 'My socials',
-    'card.portfolio.label': 'Links',
-    'card.portfolio.title': 'My socials',
-    'card.portfolio.text': 'Find me everywhere and dive into the Liqoy universe.',
-    'discord.card.title': 'Community server',
-    'discord.card.desc': 'Help, events and good vibes with the whole Liqoy community.',
-    'discord.title': 'Join the community',
-    'discord.text': 'Chats, support, events. Liqoy\'s Discord server is waiting for you.',
-    'discord.cta': 'Join Discord',
-    'youtube.cta.short': 'Subscribe →',
-    'twitch.cta.short': 'Follow →',
-    'avatar.label': 'Liqoy',
-    'youtube.title': 'Subscribe to\nmy channel',
-    'youtube.text': 'Minecraft videos, server development and projects around the Liqoy universe.',
-    'youtube.cta': 'Subscribe',
-    'twitch.title': 'Join the\nTwitch lives',
-    'twitch.text': 'Minecraft evenings, live dev, Q&A and community moments.',
-    'twitch.cta': 'Watch lives',
-    'footer.rights': 'All rights reserved.',
+    'nav.currently': '🔥 Currently',
+    'nav.links': '🌐 Links',
+    'nav.content': '🎨 Creations',
+    'hero.status': 'Online — creative mode activated',
+    'hero.tagline.1': 'Bedwars',
+    'hero.tagline.2': 'Rocket League',
+    'hero.tagline.3': 'Tech',
+    'hero.cta': '🌐 My socials',
+    'hero.cta2': '🤔 What I do',
+    'currently.label': 'Right now',
+    'currently.title': 'On the stove 🍳',
+    'currently.desc': "What I'm up to (spoiler: it's cool).",
+    'current.1.label': 'Bedwars Concepts',
+    'current.1.text': 'Working on some wild Bedwars concepts — maps, mechanics, reworks. Big stuff!',
+    'current.1.live': 'In progress 🔥',
+    'current.2.label': 'Tech Stuff',
+    'current.2.text': 'Preparing tech content — videos, dev, experiments. It\'s gonna be clean (or not).',
+    'current.2.live': 'In the oven 🤫',
+    'links.label': 'Find me',
+    'links.title': 'Where do I hang out?',
+    'links.desc': "Click around, I'm nice I don't bite (unless you're a cube).",
+    'discord.name': 'Community HQ',
+    'twitter.name': 'My tweets',
+    'github.name': 'Code & stuff',
+    'content.label': 'My stuff',
+    'content.title': 'Look what I made!',
+    'content.desc': 'A selection of my finest digital pancakes.',
+    'content.1.tag': '⚔️ Bedwars',
+    'content.1.title': 'Bedwars Map — Crystalline',
+    'content.1.desc': 'A map with crystals that do things. It\'s pretty and it slaps.',
+    'content.1.link': 'See the madness →',
+    'content.2.tag': '🔧 Tech',
+    'content.2.title': 'Build an MC server in 2025',
+    'content.2.desc': 'Modern stack, automation, and a bit of sweat. It\'s actually cool.',
+    'content.2.link': 'Watch the video →',
+    'content.3.tag': '🚗 Rocket League',
+    'content.3.title': 'Montage — Season X',
+    'content.3.desc': 'My best goals and stylish moments (yeah I\'m showing off a bit).',
+    'content.3.link': 'Check it out →',
+    'content.4.tag': '🤖 Dev',
+    'content.4.title': 'Bedwars Map Generator',
+    'content.4.desc': 'An open-source tool that generates maps. Because I was lazy.',
+    'content.4.link': 'See the chaos →',
+    'about.label': 'Who dis?',
+    'about.greeting': "Hey it's Liqoy! 👋",
+    'about.text': "I'm a Bedwars enthusiast who spends his time imagining crazy (but cool) concepts. When I'm not doing that, I tinker with tech content, edit videos, or lose at Rocket League. I like well-made stuff, original ideas and nice communities. Anyway, welcome to my slightly messy little universe. Enjoy! 🎉",
+    'footer.rights': 'All rights reserved (or not).',
   }
 };
 
@@ -82,14 +119,11 @@ document.querySelectorAll('.lang-switch__btn').forEach(btn => {
   btn.addEventListener('click', () => applyLang(btn.dataset.lang));
 });
 
-/* ─── Navbar scroll ─── */
 const navbar = document.getElementById('navbar');
-
 window.addEventListener('scroll', () => {
   navbar.classList.toggle('navbar--scrolled', window.scrollY > 40);
 }, { passive: true });
 
-/* ─── Scroll reveal ─── */
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -100,48 +134,3 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ─── Subtitle slider ─── */
-const slider = document.getElementById('subtitleSlider');
-if (slider) {
-  const slides = slider.querySelectorAll('.hero__subtitle-slide');
-  let slideH = 0;
-  let current = 0;
-
-  function getSlideH() {
-    return slides[0] ? slides[0].getBoundingClientRect().height || 44.8 : 44.8;
-  }
-
-  setTimeout(() => { slideH = getSlideH(); }, 100);
-
-  setInterval(() => {
-    if (!slideH) slideH = getSlideH();
-    current = (current + 1) % (slides.length - 1);
-    slider.style.transform = `translateY(-${current * slideH}px)`;
-
-    if (current === slides.length - 2) {
-      setTimeout(() => {
-        slider.style.transition = 'none';
-        slider.style.transform = 'translateY(0px)';
-        current = 0;
-        requestAnimationFrame(() => requestAnimationFrame(() => {
-          slider.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-        }));
-      }, 600);
-    }
-  }, 3200);
-}
-
-/* ─── Hero avatar tilt ─── */
-const tiltEl = document.querySelector('[data-tilt]');
-if (tiltEl) {
-  tiltEl.addEventListener('mousemove', (e) => {
-    const r = tiltEl.getBoundingClientRect();
-    const dx = (e.clientX - r.left - r.width / 2) / (r.width / 2);
-    const dy = (e.clientY - r.top - r.height / 2) / (r.height / 2);
-    tiltEl.style.transform = `perspective(400px) rotateY(${dx * 8}deg) rotateX(${-dy * 8}deg) scale(1.03)`;
-  });
-  tiltEl.addEventListener('mouseleave', () => {
-    tiltEl.style.transform = '';
-  });
-}
