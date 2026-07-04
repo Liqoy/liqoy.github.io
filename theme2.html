@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liqoy — Prochainement</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      background: #08081a;
+      color: #f0f0f8;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 40% at 15% 25%, rgba(255,107,157,0.08), transparent 65%),
+        radial-gradient(ellipse 60% 35% at 85% 55%, rgba(107,203,255,0.07), transparent 60%),
+        radial-gradient(ellipse 50% 30% at 50% 80%, rgba(192,132,252,0.06), transparent 55%);
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(90px);
+      opacity: 0.1;
+      animation: blobDrift 18s ease-in-out infinite alternate;
+    }
+
+    .blob--1 {
+      width: 550px; height: 550px;
+      background: #ff6b9d;
+      top: -20%; left: -15%;
+      animation-duration: 20s;
+    }
+    .blob--2 {
+      width: 450px; height: 450px;
+      background: #6bcbff;
+      bottom: -20%; right: -15%;
+      animation-duration: 24s;
+      animation-delay: -6s;
+    }
+    .blob--3 {
+      width: 350px; height: 350px;
+      background: #c084fc;
+      top: 40%; left: 40%;
+      animation-duration: 16s;
+      animation-delay: -12s;
+    }
+
+    @keyframes blobDrift {
+      from { transform: translate(0, 0) scale(1); }
+      to { transform: translate(35px, 25px) scale(1.12); }
+    }
+
+    .container {
+      max-width: 560px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      animation: riseUp 0.9s cubic-bezier(0.22,1,0.36,1) both;
+    }
+
+    @keyframes riseUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 28px;
+    }
+
+    .avatar {
+      width: 88px; height: 88px;
+      border-radius: 999px;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+      border: 2px solid rgba(255,255,255,0.08);
+      box-shadow: 0 0 40px rgba(255,107,157,0.15);
+      transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+
+    .avatar:hover {
+      transform: scale(1.08) rotate(5deg);
+      box-shadow: 0 0 60px rgba(255,107,157,0.25);
+    }
+
+    .ring {
+      position: absolute;
+      inset: -8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,107,157,0.15);
+      animation: ringBreath 3.5s ease-in-out infinite;
+    }
+    .ring--2 {
+      inset: -16px;
+      border-color: rgba(107,203,255,0.1);
+      animation-delay: 0.6s;
+      animation-duration: 4s;
+    }
+    .ring--3 {
+      inset: -24px;
+      border-color: rgba(192,132,252,0.07);
+      animation-delay: 1.2s;
+      animation-duration: 4.5s;
+    }
+
+    @keyframes ringBreath {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.05); opacity: 0.4; }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 15px;
+      background: rgba(255,107,157,0.08);
+      border: 1px solid rgba(255,107,157,0.15);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      color: #ff8eb5;
+      margin-bottom: 16px;
+      animation: riseUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.08s both;
+    }
+
+    .badge-dot {
+      width: 5px; height: 5px;
+      border-radius: 999px;
+      background: #ff6b9d;
+      animation: dotPop 2s ease-in-out infinite;
+    }
+
+    @keyframes dotPop {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.25; transform: scale(0.5); }
+    }
+
+    .pseudo {
+      font-size: clamp(3rem, 9vw, 4.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #ff6b9d, #fbbf24, #6bcbff, #c084fc);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+      background-size: 200% 200%;
+      animation: gradShift 6s ease-in-out infinite, riseUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.12s both;
+    }
+
+    @keyframes gradShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .tagline {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.45);
+      font-weight: 400;
+      line-height: 1.55;
+      max-width: 420px;
+      margin: 0 auto 32px;
+      animation: riseUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.18s both;
+    }
+
+    .tagline span:nth-child(1) { color: #ff8eb5; font-weight: 500; }
+    .tagline span:nth-child(2) { color: #8ed4ff; font-weight: 500; }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: riseUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.24s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 28px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+      text-decoration: none;
+    }
+
+    .btn:hover { transform: scale(1.04) translateY(-2px); }
+    .btn:active { transform: scale(0.97); }
+
+    .btn--primary {
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(255,107,157,0.25);
+    }
+
+    .btn--primary:hover { box-shadow: 0 8px 40px rgba(255,107,157,0.35); }
+
+    .btn--ghost {
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.55);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .btn--ghost:hover {
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.15);
+      color: #fff;
+    }
+
+    .btn--accent {
+      background: linear-gradient(135deg, #6bcbff, #a78bfa);
+      color: #fff;
+      box-shadow: 0 4px 24px rgba(107,203,255,0.25);
+    }
+
+    .btn--accent:hover { box-shadow: 0 8px 40px rgba(107,203,255,0.35); }
+
+    .divider {
+      width: 44px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      margin: 28px auto;
+      animation: riseUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.3s both;
+    }
+
+    .footer-text {
+      font-size: 13px;
+      color: rgba(255,255,255,0.2);
+      font-weight: 400;
+      animation: riseUp 0.9s cubic-bezier(0.22,1,0.36,1) 0.36s both;
+    }
+
+    /* ─── Language ─── */
+    .lang-switch {
+      position: fixed;
+      top: 24px;
+      right: 24px;
+      display: flex;
+      gap: 4px;
+      padding: 5px;
+      background: rgba(8,8,26,0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 999px;
+      z-index: 10;
+    }
+
+    .lang-btn {
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: none;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      color: rgba(255,255,255,0.3);
+      background: transparent;
+      font-family: inherit;
+      letter-spacing: 0.03em;
+    }
+
+    .lang-btn:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .lang-btn--active { background: rgba(255,107,157,0.2); color: #ff8eb5; }
+
+    /* ─── Theme ─── */
+    .theme-switch {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+      padding: 5px;
+      background: rgba(8,8,26,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 999px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .theme-btn {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      color: rgba(255,255,255,0.3);
+      background: transparent;
+      font-family: inherit;
+    }
+
+    .theme-btn:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .theme-btn--active { background: rgba(255,107,157,0.15); color: #ff8eb5; }
+    /* ─── Music Player ─── */
+    .player { position: fixed; bottom: 24px; right: 24px; z-index: 20; display: flex; flex-direction: column; align-items: flex-end; }
+    .player__toggle {
+      width: 48px; height: 48px; min-width: 48px; border-radius: 999px; border: none; cursor: pointer;
+      background: rgba(255,255,255,0.08); color: #fff;
+      backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .player__toggle:hover { transform: scale(1.1) perspective(300px) rotateY(-4deg); border-color: rgba(255,107,157,0.4); }
+    .player__toggle:active { transform: scale(0.92); }
+    .player__toggle svg { width: 22px; height: 22px; }
+    .player__card {
+      position: absolute; bottom: 58px; right: 0;
+      background: rgba(12,12,35,0.92); backdrop-filter: blur(28px);
+      border: 1px solid rgba(255,107,157,0.08);
+      border-radius: 24px; padding: 20px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 40px rgba(192,132,252,0.03);
+      display: none; flex-direction: column; gap: 14px;
+      width: 300px;
+      max-width: calc(100vw - 48px);
+      transform-origin: bottom right;
+      transform-style: preserve-3d;
+      will-change: transform;
+      animation: cardIn 0.3s cubic-bezier(0.22,1,0.36,1);
+      transition: box-shadow 0.4s ease, transform 0.2s cubic-bezier(0.22,1,0.36,1);
+    }
+    .player__card--open { display: flex; }
+    @keyframes cardIn { from { opacity: 0; transform: scale(0.95) translateY(12px); } to { opacity: 1; transform: none; } }
+    .player__head { display: flex; gap: 16px; align-items: center; }
+    .player__cover { width: 62px; height: 62px; border-radius: 16px; object-fit: cover; flex-shrink: 0; box-shadow: 0 4px 20px rgba(0,0,0,0.3); transition: transform 0.35s ease, box-shadow 0.35s ease; transform: translateZ(0); }
+    .player__cover:hover { transform: translateZ(12px) scale(1.05); box-shadow: 0 8px 32px rgba(0,0,0,0.4); }
+    .player__meta { flex: 1; min-width: 0; }
+    .player__title { font-size: 15px; font-weight: 600; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; letter-spacing: -0.01em; }
+    .player__artist { font-size: 13px; color: rgba(255,255,255,0.35); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .player__progress { display: flex; flex-direction: column; gap: 6px; }
+    .player__bar {
+      width: 100%; height: 6px; -webkit-appearance: none; appearance: none;
+      border-radius: 999px; outline: none; cursor: pointer; background: rgba(255,255,255,0.06);
+    }
+    .player__bar::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 18px; height: 18px; border-radius: 999px;
+      background: linear-gradient(135deg, #ff6b9d, #c084fc); cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3); border: 3px solid rgba(255,255,255,0.2);
+    }
+    .player__times { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,0.25); font-weight: 500; }
+    .player__actions { display: flex; align-items: center; gap: 8px; }
+    .player__btn {
+      width: 44px; height: 44px; min-width: 44px; border-radius: 999px; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.4);
+      transition: all 0.2s ease; transform: translateZ(0);
+    }
+    .player__btn:hover { background: rgba(255,255,255,0.08); color: #fff; transform: translateZ(4px) scale(1.04); }
+    .player__btn:active { transform: scale(0.90); }
+    .player__btn svg { width: 18px; height: 18px; }
+    .player__btn--play { width: 48px; height: 48px; min-width: 48px; background: linear-gradient(135deg, #ff6b9d, #c084fc); color: #fff; }
+    .player__btn--play:hover { transform: translateZ(6px) scale(1.06); box-shadow: 0 6px 24px rgba(255,107,157,0.3); }
+    .player__btn--play:active { transform: scale(0.90); }
+    .player__volume { flex: 1; display: flex; align-items: center; gap: 8px; margin-left: 6px; }
+    .player__vol-icon { color: rgba(255,255,255,0.2); display: flex; align-items: center; }
+    .player__vol-icon svg { width: 16px; height: 16px; }
+    .player__vol {
+      width: 100%; height: 4px; -webkit-appearance: none; appearance: none;
+      border-radius: 999px; outline: none; cursor: pointer; background: rgba(255,255,255,0.06);
+    }
+    .player__vol::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 14px; height: 14px; border-radius: 999px;
+      background: rgba(255,255,255,0.5); cursor: pointer; border: none;
+    }
+    .player__cover--playing { animation: coverGlow 1.8s ease-in-out infinite; }
+    @keyframes coverGlow { 0%, 100% { box-shadow: 0 4px 20px rgba(0,0,0,0.3); } 50% { box-shadow: 0 4px 32px rgba(192,132,252,0.2), 0 0 48px rgba(255,107,157,0.08); } }
+    @media (max-width: 540px) {
+      .player { right: 12px; bottom: 12px; }
+      .player__card { width: calc(100vw - 24px); right: 0; }
+      .player__toggle { width: 52px; height: 52px; min-width: 52px; }
+      .player__btn--play { width: 52px; height: 52px; min-width: 52px; }
+      .player__vol { width: 80px; min-width: 60px; }
+    }
+    @media (max-width: 480px) {
+      body { padding: 24px 12px; }
+      .container { padding: 0 4px; }
+      .avatar-wrap { width: 72px; height: 72px; margin-bottom: 20px; }
+      .avatar { width: 72px; height: 72px; }
+      .badge { font-size: 10px; padding: 5px 12px; }
+      .pseudo { font-size: clamp(2.8rem, 14vw, 4rem); }
+      .tagline { font-size: 0.85rem; }
+      .btn { padding: 12px 20px; font-size: 12px; }
+      .blob { display: none; }
+      .lang-switch { top: 12px; right: 12px; padding: 4px; gap: 2px; }
+      .lang-btn { padding: 4px 8px; font-size: 10px; }
+      .theme-switch { bottom: 12px; padding: 4px; gap: 2px; }
+      .theme-btn { padding: 4px 10px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="blob blob--1"></div>
+  <div class="blob blob--2"></div>
+  <div class="blob blob--3"></div>
+
+  <div class="container">
+    <div class="avatar-wrap">
+      <img src="./logo.ico" alt="Liqoy" class="avatar" />
+      <div class="ring"></div>
+      <div class="ring ring--2"></div>
+      <div class="ring ring--3"></div>
+    </div>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span id="badgeText">Création en cours</span>
+    </div>
+    <h1 class="pseudo">Liqoy</h1>
+    <p class="tagline" id="tagline">
+      Contenu <span>Bedwars</span> & <span>Tech</span> — bientôt
+    </p>
+    <div class="btn-row">
+      <a href="mailto:liqoymc@gmail.com" class="btn btn--primary" id="btnContact">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg>
+        Me contacter
+      </a>
+      <a href="https://guns.lol/liqoy" target="_blank" rel="noopener" class="btn btn--ghost" id="btnGuns">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        guns.lol
+      </a>
+    </div>
+    <div class="divider"></div>
+    <p class="footer-text" id="footerText">Coming soon — something's cooking</p>
+  </div>
+
+  <nav class="lang-switch">
+    <button class="lang-btn lang-btn--active" data-lang="fr">FR</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="es">ES</button>
+    <button class="lang-btn" data-lang="de">DE</button>
+  </nav>
+
+  <nav class="theme-switch">
+    <a href="./index.html" class="theme-btn">Pro</a>
+    <a href="./theme2.html" class="theme-btn theme-btn--active">Créa</a>
+    <a href="./theme3.html" class="theme-btn">Tuff</a>
+  </nav>
+
+  <div class="player" id="player">
+    <button class="player__toggle" id="playerToggle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    </button>
+    <div class="player__card" id="playerCard">
+      <div class="player__head">
+        <img class="player__cover" id="playerCover" src="" alt="" />
+        <div class="player__meta">
+          <p class="player__title" id="playerTitle">Titre</p>
+          <p class="player__artist" id="playerArtist">Artiste</p>
+        </div>
+      </div>
+      <div class="player__progress">
+        <input type="range" class="player__bar" id="playerProgress" min="0" max="100" value="0" step="0.1" />
+        <div class="player__times">
+          <span id="playerCurrent">0:00</span>
+          <span id="playerTotal">0:00</span>
+        </div>
+      </div>
+      <div class="player__actions">
+        <button class="player__btn" id="playerPrev">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+        </button>
+        <button class="player__btn player__btn--play" id="playerPlay">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="player__btn" id="playerNext">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+        </button>
+        <div class="player__volume">
+          <span class="player__vol-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+          </span>
+          <input type="range" class="player__vol" id="playerVolume" min="0" max="1" step="0.01" value="0.7" />
+        </div>
+      </div>
+    </div>
+    <audio id="audioPlayer" preload="metadata"></audio>
+  </div>
+
+  <script>
+    const translations = {
+      fr: {
+        badge: 'Création en cours',
+        tagline: 'Contenu <span>Bedwars</span> & <span>Tech</span> — bientôt',
+        btnContact: 'Me contacter',
+        btnGuns: 'guns.lol',
+        footerText: 'En préparation — quelque chose arrive'
+      },
+      en: {
+        badge: 'Creation in progress',
+        tagline: 'Content <span>Bedwars</span> & <span>Tech</span> — coming soon',
+        btnContact: 'Contact me',
+        btnGuns: 'guns.lol',
+        footerText: 'In preparation — something is coming'
+      },
+      es: {
+        badge: 'Creación en curso',
+        tagline: 'Contenido <span>Bedwars</span> & <span>Tech</span> — próximamente',
+        btnContact: 'Contactarme',
+        btnGuns: 'guns.lol',
+        footerText: 'En preparación — algo viene'
+      },
+      de: {
+        badge: 'Erstellung läuft',
+        tagline: 'Inhalt <span>Bedwars</span> & <span>Tech</span> — demnächst',
+        btnContact: 'Kontakt',
+        btnGuns: 'guns.lol',
+        footerText: 'In Vorbereitung — etwas kommt'
+      }
+    };
+
+    function applyLang(lang) {
+      const t = translations[lang];
+      document.getElementById('badgeText').textContent = t.badge;
+      document.getElementById('tagline').innerHTML = t.tagline;
+      document.getElementById('btnContact').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg> ' + t.btnContact;
+      document.getElementById('btnGuns').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> ' + t.btnGuns;
+      document.getElementById('footerText').textContent = t.footerText;
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('lang-btn--active'));
+      document.querySelector('.lang-btn[data-lang="'+lang+'"]').classList.add('lang-btn--active');
+      localStorage.setItem('liqoyLang', lang);
+    }
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+    });
+    if (localStorage.getItem('liqoyLang')) applyLang(localStorage.getItem('liqoyLang'));
+
+    const songs = [
+      { title: 'The Sweet Escape', artist: 'Gwen Stefani', cover: './music/music 1/SpotiMate.io - The Sweet Escape - Gwen Stefani.jpg', src: './music/music 1/SpotiMate.io - The Sweet Escape - Gwen Stefani.mp3' },
+      { title: 'Confident', artist: 'Justin Bieber', cover: './music/music 2/SpotiMate.io - Confident - Justin Bieber.jpg', src: './music/music 2/SpotiMate.io - Confident - Justin Bieber.mp3' },
+      { title: 'greedy', artist: 'Tate McRae', cover: './music/music 3/SpotiMate.io - greedy - Tate McRae.jpg', src: './music/music 3/SpotiMate.io - greedy - Tate McRae.mp3' },
+      { title: 'One Kiss (with Dua Lipa)', artist: 'Calvin Harris', cover: './music/music 4/SpotiMate.io - One Kiss _with Dua Lipa_ - Calvin Harris.jpg', src: './music/music 4/SpotiMate.io - One Kiss _with Dua Lipa_ - Calvin Harris.mp3' },
+      { title: 'S&M', artist: 'Rihanna', cover: './music/music 5/SpotiMate.io - S_M - Rihanna.jpg', src: './music/music 5/SpotiMate.io - S_M - Rihanna.mp3' }
+    ];
+    let currentSong = 0;
+    let isPlaying = false;
+    const audio = document.getElementById('audioPlayer');
+    const playBtn = document.getElementById('playerPlay');
+    const prevBtn = document.getElementById('playerPrev');
+    const nextBtn = document.getElementById('playerNext');
+    const toggleBtn = document.getElementById('playerToggle');
+    const card = document.getElementById('playerCard');
+    const coverImg = document.getElementById('playerCover');
+    const titleEl = document.getElementById('playerTitle');
+    const artistEl = document.getElementById('playerArtist');
+    const progBar = document.getElementById('playerProgress');
+    const volBar = document.getElementById('playerVolume');
+    const timeCur = document.getElementById('playerCurrent');
+    const timeTot = document.getElementById('playerTotal');
+
+    function fmt(t) { const m = Math.floor(t/60); const s = Math.floor(t%60); return m+':'+(s<10?'0':'')+s; }
+
+    function loadSong(i) {
+      const s = songs[i]; currentSong = i;
+      coverImg.src = s.cover; titleEl.textContent = s.title; artistEl.textContent = s.artist;
+      audio.src = s.src; audio.load();
+    }
+
+    function togglePlay() {
+      if (audio.paused) { audio.play().catch(function() { isPlaying = false; updatePlayBtn(); }); }
+      else { audio.pause(); }
+    }
+
+    function updatePlayBtn() {
+      const svg = audio.paused
+        ? '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#fff"/></svg>'
+        : '<svg viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z" fill="#fff"/></svg>';
+      playBtn.innerHTML = svg;
+    }
+
+    function nextSong() { loadSong((currentSong+1)%songs.length); if (isPlaying) { audio.play().catch(function() { isPlaying = false; updatePlayBtn(); }); } else { updatePlayBtn(); } }
+    function prevSong() { loadSong((currentSong-1+songs.length)%songs.length); if (isPlaying) { audio.play().catch(function() { isPlaying = false; updatePlayBtn(); }); } else { updatePlayBtn(); } }
+
+    document.addEventListener('click', function firstPlay(e) {
+      if (!e.target.closest('.player') && audio.src) {
+        var p = audio.play();
+        if (p && p.then) { p.then(function() { audio.pause(); }).catch(function() {}); }
+      }
+      document.removeEventListener('click', firstPlay);
+    }, { once: true });
+
+    audio.addEventListener('loadedmetadata', function() {
+      timeTot.textContent = fmt(audio.duration);
+      progBar.max = audio.duration;
+    });
+
+    audio.addEventListener('timeupdate', function() {
+      progBar.value = audio.currentTime;
+      timeCur.textContent = fmt(audio.currentTime);
+      progBar.style.background = 'linear-gradient(to right, #c084fc '+(progBar.value/progBar.max*100)+'%, rgba(255,255,255,0.06) '+(progBar.value/progBar.max*100)+'%)';
+    });
+
+    audio.addEventListener('play', function() { isPlaying = true; updatePlayBtn(); coverImg.classList.add('player__cover--playing'); });
+    audio.addEventListener('pause', function() { isPlaying = false; updatePlayBtn(); coverImg.classList.remove('player__cover--playing'); });
+    audio.addEventListener('ended', function() { updatePlayBtn(); coverImg.classList.remove('player__cover--playing'); nextSong(); });
+
+    progBar.addEventListener('input', function() { audio.currentTime = this.value; });
+
+    volBar.addEventListener('input', function() { audio.volume = this.value; });
+
+    // Restore music state across themes (localStorage)
+    (function() {
+      const ss = localStorage.getItem('liqoySong'), st = localStorage.getItem('liqoyTime');
+      const sp = localStorage.getItem('liqoyPlaying'), sv = localStorage.getItem('liqoyVolume');
+      if (ss !== null) {
+        loadSong(parseInt(ss));
+        if (sv !== null) { audio.volume = parseFloat(sv); volBar.value = parseFloat(sv); }
+        if (st !== null) {
+          audio.addEventListener('loadedmetadata', function() {
+            audio.currentTime = Math.min(parseFloat(st), audio.duration || 0);
+            if (sp === '1') audio.play().catch(function() { isPlaying = false; updatePlayBtn(); });
+          }, { once: true });
+        }
+      } else { loadSong(0); }
+    })();
+    playBtn.addEventListener('click', togglePlay);
+    nextBtn.addEventListener('click', nextSong);
+    prevBtn.addEventListener('click', prevSong);
+    toggleBtn.addEventListener('click', function() { card.classList.toggle('player__card--open'); });
+    // 3D tilt effect on card (skips interactive children to prevent cursor flicker)
+    var tiltRAF = null;
+    card.addEventListener('mousemove', function(e) {
+      if (e.target.closest('button,input,a')) { return; }
+      if (tiltRAF) { cancelAnimationFrame(tiltRAF); }
+      var el = this;
+      tiltRAF = requestAnimationFrame(function() {
+        var rect = el.getBoundingClientRect();
+        var x = (e.clientX - rect.left) / rect.width;
+        var y = (e.clientY - rect.top) / rect.height;
+        el.style.transform = 'perspective(600px) rotateX('+((y-0.5)*14)+'deg) rotateY('+((0.5-x)*14)+'deg)';
+        tiltRAF = null;
+      });
+    });
+    card.addEventListener('mouseleave', function() {
+      if (tiltRAF) { cancelAnimationFrame(tiltRAF); tiltRAF = null; }
+      this.style.transform = '';
+    });
+    // Save music state on page leave (cross-theme)
+    window.addEventListener('beforeunload', function() {
+      localStorage.setItem('liqoySong', currentSong);
+      localStorage.setItem('liqoyTime', audio.currentTime);
+      localStorage.setItem('liqoyPlaying', isPlaying ? '1' : '0');
+      localStorage.setItem('liqoyVolume', audio.volume);
+    });
+  </script>
+</body>
+</html>
