@@ -323,8 +323,8 @@
   <div class="container">
     <div class="overlay">
       <span class="constr-icon">🚧</span>
-      <span class="constr-title">EN CONSTRUCTION</span>
-      <span class="constr-sub">▸ EN PRÉPARATION ◂</span>
+      <span class="constr-title" id="constrTitle">EN CONSTRUCTION</span>
+      <span class="constr-sub" id="constrSub">▸ EN PRÉPARATION ◂</span>
       <div class="constr-bar"></div>
     </div>
     <div class="avatar-wrap">
@@ -404,24 +404,32 @@
   <script>
     const translations = {
       fr: {
+        constrTitle: 'EN CONSTRUCTION',
+        constrSub: '▸ EN PRÉPARATION ◂',
         tagline: 'Contenu <span>Bedwars</span> & <span>Tech</span> — bientôt',
         btnContact: 'Me contacter',
         btnGuns: 'guns.lol',
         footerText: 'En préparation — quelque chose arrive'
       },
       en: {
+        constrTitle: 'UNDER CONSTRUCTION',
+        constrSub: '▸ IN PROGRESS ◂',
         tagline: 'Content <span>Bedwars</span> & <span>Tech</span> — coming soon',
         btnContact: 'Contact me',
         btnGuns: 'guns.lol',
         footerText: 'In preparation — something is coming'
       },
       es: {
+        constrTitle: 'EN CONSTRUCCIÓN',
+        constrSub: '▸ EN PREPARACIÓN ◂',
         tagline: 'Contenido <span>Bedwars</span> & <span>Tech</span> — próximamente',
         btnContact: 'Contactarme',
         btnGuns: 'guns.lol',
         footerText: 'En preparación — algo viene'
       },
       de: {
+        constrTitle: 'IN BEARBEITUNG',
+        constrSub: '▸ IN VORBEREITUNG ◂',
         tagline: 'Inhalt <span>Bedwars</span> & <span>Tech</span> — demnächst',
         btnContact: 'Kontakt',
         btnGuns: 'guns.lol',
@@ -431,6 +439,8 @@
 
     function applyLang(lang) {
       const t = translations[lang];
+      document.getElementById('constrTitle').textContent = t.constrTitle;
+      document.getElementById('constrSub').textContent = t.constrSub;
       document.getElementById('tagline').innerHTML = t.tagline;
       document.getElementById('btnContact').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg> ' + t.btnContact;
       document.getElementById('btnGuns').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> ' + t.btnGuns;

@@ -423,8 +423,8 @@
     <div class="container">
       <div class="overlay">
         <span class="constr-icon">🚧</span>
-        <span class="constr-title">EN CONSTRUCTION</span>
-        <span class="constr-sub">▸ EN PRÉPARATION ◂</span>
+        <span class="constr-title" id="constrTitle">EN CONSTRUCTION</span>
+        <span class="constr-sub" id="constrSub">▸ EN PRÉPARATION ◂</span>
       </div>
       <span class="star" style="top:3%;left:12%;">✦</span>
       <span class="star" style="top:5%;right:18%;font-size:1rem;color:#FF6B35;animation-delay:-0.5s;">★</span>
@@ -510,6 +510,8 @@
   <script>
     const translations = {
       fr: {
+        constrTitle: 'EN CONSTRUCTION',
+        constrSub: '▸ EN PRÉPARATION ◂',
         status: 'STATUT: SUCCÈS',
         tagline: '<span>BEDWARS</span> / <span>TECH</span> — BIENTÔT',
         btnContact: 'CONTACT',
@@ -517,6 +519,8 @@
         footerText: '// SYSTÈME: PRÉPARATION EN COURS'
       },
       en: {
+        constrTitle: 'UNDER CONSTRUCTION',
+        constrSub: '▸ IN PROGRESS ◂',
         status: 'STATUS: SUCCESS',
         tagline: '<span>BEDWARS</span> / <span>TECH</span> — COMMING SOON',
         btnContact: 'CONTACT',
@@ -524,6 +528,8 @@
         footerText: '// SYSTEM: PREPARING DEPLOYMENT'
       },
       es: {
+        constrTitle: 'EN CONSTRUCCIÓN',
+        constrSub: '▸ EN PREPARACIÓN ◂',
         status: 'ESTADO: ÉXITO',
         tagline: '<span>BEDWARS</span> / <span>TECH</span> — PRÓXIMAMENTE',
         btnContact: 'CONTACTO',
@@ -531,6 +537,8 @@
         footerText: '// SISTEMA: PREPARANDO DESPLIEGUE'
       },
       de: {
+        constrTitle: 'IN BEARBEITUNG',
+        constrSub: '▸ IN VORBEREITUNG ◂',
         status: 'STATUS: ERFOLG',
         tagline: '<span>BEDWARS</span> / <span>TECH</span> — DEMNÄCHST',
         btnContact: 'KONTAKT',
@@ -541,6 +549,8 @@
 
     function applyLang(lang) {
       const t = translations[lang];
+      document.getElementById('constrTitle').textContent = t.constrTitle;
+      document.getElementById('constrSub').textContent = t.constrSub;
       document.getElementById('statusText').textContent = t.status;
       document.getElementById('tagline').innerHTML = t.tagline;
       document.getElementById('btnContact').innerHTML = t.btnContact + ' <span class="btn__arrow">→</span>';

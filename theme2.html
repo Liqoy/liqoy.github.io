@@ -446,8 +446,8 @@
   <div class="container">
     <div class="overlay">
       <span class="constr-icon">🚧</span>
-      <span class="constr-title">EN CONSTRUCTION</span>
-      <span class="constr-sub">▸ EN PRÉPARATION ◂</span>
+      <span class="constr-title" id="constrTitle">EN CONSTRUCTION</span>
+      <span class="constr-sub" id="constrSub">▸ EN PRÉPARATION ◂</span>
       <div class="constr-dots"><span></span><span></span><span></span></div>
     </div>
     <div class="avatar-wrap">
@@ -534,6 +534,8 @@
   <script>
     const translations = {
       fr: {
+        constrTitle: 'EN CONSTRUCTION',
+        constrSub: '▸ EN PRÉPARATION ◂',
         badge: 'Création en cours',
         tagline: 'Contenu <span>Bedwars</span> & <span>Tech</span> — bientôt',
         btnContact: 'Me contacter',
@@ -541,6 +543,8 @@
         footerText: 'En préparation — quelque chose arrive'
       },
       en: {
+        constrTitle: 'UNDER CONSTRUCTION',
+        constrSub: '▸ IN PROGRESS ◂',
         badge: 'Creation in progress',
         tagline: 'Content <span>Bedwars</span> & <span>Tech</span> — coming soon',
         btnContact: 'Contact me',
@@ -548,6 +552,8 @@
         footerText: 'In preparation — something is coming'
       },
       es: {
+        constrTitle: 'EN CONSTRUCCIÓN',
+        constrSub: '▸ EN PREPARACIÓN ◂',
         badge: 'Creación en curso',
         tagline: 'Contenido <span>Bedwars</span> & <span>Tech</span> — próximamente',
         btnContact: 'Contactarme',
@@ -555,6 +561,8 @@
         footerText: 'En preparación — algo viene'
       },
       de: {
+        constrTitle: 'IN BEARBEITUNG',
+        constrSub: '▸ IN VORBEREITUNG ◂',
         badge: 'Erstellung läuft',
         tagline: 'Inhalt <span>Bedwars</span> & <span>Tech</span> — demnächst',
         btnContact: 'Kontakt',
@@ -565,6 +573,8 @@
 
     function applyLang(lang) {
       const t = translations[lang];
+      document.getElementById('constrTitle').textContent = t.constrTitle;
+      document.getElementById('constrSub').textContent = t.constrSub;
       document.getElementById('badgeText').textContent = t.badge;
       document.getElementById('tagline').innerHTML = t.tagline;
       document.getElementById('btnContact').innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4l-10 8L2 4"/></svg> ' + t.btnContact;
