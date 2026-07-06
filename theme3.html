@@ -85,6 +85,22 @@
     }
     @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
 
+    /* Construction overlay */
+    .overlay {
+      position: absolute; inset: 0; z-index: 5;
+      background: rgba(255,245,230,0.88);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 12px; border-radius: 20px;
+      user-select: none;
+      border: 4px dashed #FF6B35;
+      animation: constrBorder 2s linear infinite;
+    }
+    @keyframes constrBorder { 0% { border-color: #FF6B35; } 50% { border-color: #1a1a2e; } 100% { border-color: #FF6B35; } }
+    .overlay .constr-icon { font-size: 2.5rem; animation: constrSwing 1.5s ease-in-out infinite; }
+    @keyframes constrSwing { 0%,100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
+    .overlay .constr-title { font-family: 'Bangers', cursive; font-size: clamp(2rem, 8vw, 3.5rem); color: #FF6B35; text-shadow: 3px 3px 0 #1a1a2e; letter-spacing: 0.04em; line-height: 1; }
+    .overlay .constr-sub { font-size: 11px; color: #1a1a2e; font-weight: 700; text-transform: uppercase; letter-spacing: 0.15em; opacity: 0.6; margin-top: 4px; }
+
     /* Comic burst behind pseudo */
     .title-wrap {
       position: relative;
@@ -405,6 +421,11 @@
 </head>
   <body>
     <div class="container">
+      <div class="overlay">
+        <span class="constr-icon">🚧</span>
+        <span class="constr-title">EN CONSTRUCTION</span>
+        <span class="constr-sub">▸ EN PRÉPARATION ◂</span>
+      </div>
       <span class="star" style="top:3%;left:12%;">✦</span>
       <span class="star" style="top:5%;right:18%;font-size:1rem;color:#FF6B35;animation-delay:-0.5s;">★</span>
       <span class="star" style="bottom:8%;right:10%;font-size:2rem;animation-delay:-1.5s;color:#FFD700;">✦</span>

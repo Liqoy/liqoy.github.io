@@ -298,10 +298,35 @@
       .theme-switch { bottom: 12px; padding: 4px; gap: 2px; }
       .theme-btn { padding: 4px 10px; font-size: 10px; }
     }
+    .overlay {
+      position: absolute; inset: 0; z-index: 5;
+      background: rgba(255,255,255,0.85); backdrop-filter: blur(10px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 10px; border-radius: 20px;
+      user-select: none;
+    }
+    .overlay .constr-icon { font-size: 2rem; animation: constrPulse 1.5s ease-in-out infinite; }
+    @keyframes constrPulse { 0%,100% { transform: scale(1); opacity:1; } 50% { transform: scale(1.1); opacity:0.7; } }
+    .overlay .constr-title { font-size: clamp(1.4rem, 5vw, 2.4rem); font-weight: 800; color: #1a1a2e; letter-spacing: 0.01em; }
+    .overlay .constr-sub { font-size: 11px; color: #9a9ab0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; }
+    .overlay .constr-bar {
+      width: 120px; height: 4px; background: #e8e8ee; border-radius: 999px; overflow: hidden; margin-top: 4px;
+    }
+    .overlay .constr-bar::after {
+      content: ''; display: block; width: 40%; height: 100%; background: #1a1a2e; border-radius: 999px;
+      animation: constrLoad 1.8s ease-in-out infinite;
+    }
+    @keyframes constrLoad { 0% { transform: translateX(-100%); } 100% { transform: translateX(350%); } }
   </style>
 </head>
 <body>
   <div class="container">
+    <div class="overlay">
+      <span class="constr-icon">🚧</span>
+      <span class="constr-title">EN CONSTRUCTION</span>
+      <span class="constr-sub">▸ EN PRÉPARATION ◂</span>
+      <div class="constr-bar"></div>
+    </div>
     <div class="avatar-wrap">
       <img src="./logo.ico" alt="Liqoy" class="avatar" />
     </div>
